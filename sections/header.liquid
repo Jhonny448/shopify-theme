@@ -17,10 +17,18 @@
 {%- endif -%}
 
 <style>
+  /* RTL: hamburger RIGHT (grid-area: icons), cart LEFT (grid-area: left-icons) */
   header-drawer {
-    justify-self: end;
+    grid-area: icons !important;
+    justify-self: end !important;
     margin-right: -1.2rem;
     margin-left: 0;
+  }
+  .header__icons {
+    grid-area: left-icons !important;
+    justify-self: start !important;
+    padding-right: 0 !important;
+    padding-left: 0.8rem !important;
   }
 
   {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
