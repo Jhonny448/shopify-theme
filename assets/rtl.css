@@ -1,0 +1,633 @@
+/* ============================================================
+   ELORA — RTL Hebrew Stylesheet for Spotlight Theme
+   Overrides all LTR-specific properties for full RTL support
+   ============================================================ */
+
+/* ── 1. GLOBAL FONT & DIRECTION ─────────────────────────── */
+*,
+*::before,
+*::after {
+  font-family: 'Heebo', sans-serif !important;
+}
+
+html[dir="rtl"],
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+body {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ── 2. TYPOGRAPHY ──────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Heebo', sans-serif !important;
+  text-align: right;
+}
+
+p, span, a, li, label, input, textarea, select, button {
+  font-family: 'Heebo', sans-serif !important;
+}
+
+/* ── 3. HEADER ──────────────────────────────────────────── */
+.header {
+  direction: rtl;
+}
+
+.header__heading {
+  text-align: center;
+}
+
+/* Logo — center */
+.header__heading-link {
+  margin: 0 auto;
+}
+
+/* Nav — right side */
+.header__inline-menu {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Icons (cart, account, search) — left side */
+.header__icons {
+  margin-left: 0;
+  margin-right: auto;
+  flex-direction: row-reverse;
+}
+
+/* Hamburger menu — right */
+.header__menu-item {
+  flex-direction: row-reverse;
+}
+
+/* Dropdown menus */
+.header__submenu,
+.mega-menu__content {
+  right: 0;
+  left: auto;
+  text-align: right;
+}
+
+/* Search bar */
+.header__search {
+  direction: rtl;
+}
+
+.search__input {
+  direction: rtl;
+  text-align: right;
+  padding-right: 1.5rem;
+  padding-left: 4rem;
+}
+
+.search__button {
+  right: auto;
+  left: 0;
+}
+
+/* Announcement bar */
+.announcement-bar {
+  direction: rtl;
+  text-align: center;
+}
+
+/* ── 4. NAVIGATION / MENU DRAWER ───────────────────────── */
+.menu-drawer {
+  right: 0;
+  left: auto;
+  transform: translateX(100%);
+}
+
+.menu-drawer.is-open {
+  transform: translateX(0);
+}
+
+.menu-drawer__inner-container {
+  direction: rtl;
+  text-align: right;
+}
+
+.menu-drawer__close-button {
+  right: auto;
+  left: 1.5rem;
+}
+
+.menu-drawer__navigation-items {
+  text-align: right;
+}
+
+.menu-drawer__menu-item {
+  flex-direction: row-reverse;
+}
+
+.menu-drawer__menu-item .icon-caret {
+  transform: rotate(180deg);
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.menu-drawer__submenu {
+  direction: rtl;
+}
+
+/* ── 5. CART DRAWER ─────────────────────────────────────── */
+cart-drawer {
+  direction: rtl;
+}
+
+.cart-drawer {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.cart-drawer.active,
+.cart-drawer.is-open {
+  transform: translateX(0);
+}
+
+.cart-drawer__header {
+  direction: rtl;
+  flex-direction: row-reverse;
+}
+
+.cart-drawer__close {
+  right: auto;
+  left: 1.5rem;
+}
+
+.cart-items {
+  direction: rtl;
+}
+
+.cart-item {
+  direction: rtl;
+  flex-direction: row-reverse;
+}
+
+.cart-item__image-container {
+  margin-right: 0;
+  margin-left: 1.5rem;
+}
+
+.cart-item__details {
+  text-align: right;
+}
+
+.cart-item__quantity-wrapper {
+  flex-direction: row-reverse;
+}
+
+.cart-item__discounted-prices {
+  text-align: right;
+}
+
+/* Cart footer */
+.cart-drawer__footer {
+  direction: rtl;
+  text-align: right;
+}
+
+.totals {
+  direction: rtl;
+  flex-direction: row-reverse;
+}
+
+.totals__subtotal {
+  text-align: right;
+}
+
+.totals__subtotal-value {
+  text-align: left;
+}
+
+/* ── 6. PRODUCT PAGE ────────────────────────────────────── */
+.product {
+  direction: rtl;
+}
+
+.product__info-container {
+  direction: rtl;
+  text-align: right;
+}
+
+.product__title {
+  text-align: right;
+}
+
+.product__text {
+  text-align: right;
+}
+
+/* Price */
+.price {
+  direction: rtl;
+  text-align: right;
+}
+
+.price__container {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+/* Variant picker */
+.product-form__input {
+  direction: rtl;
+  text-align: right;
+}
+
+.product-form__input label {
+  text-align: right;
+}
+
+.variant-radios,
+.variant-selects {
+  direction: rtl;
+}
+
+/* Quantity selector */
+.quantity {
+  direction: ltr; /* keep numbers LTR */
+}
+
+.quantity__button {
+  /* keep as-is for numbers */
+}
+
+/* Add to cart button */
+.product-form__submit {
+  width: 100%;
+}
+
+/* Product media gallery */
+.product__media-list {
+  direction: ltr; /* gallery scroll stays LTR */
+}
+
+.thumbnail-list {
+  direction: rtl;
+}
+
+/* Product tabs / accordion */
+.accordion__title {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.accordion__title .icon-caret {
+  margin-left: 0;
+  margin-right: auto;
+  transform: rotate(180deg);
+}
+
+.accordion__content {
+  text-align: right;
+}
+
+/* ── 7. COLLECTION / PRODUCT CARDS ─────────────────────── */
+.card__content {
+  direction: rtl;
+  text-align: right;
+}
+
+.card__information {
+  text-align: right;
+}
+
+.card__heading {
+  text-align: right;
+}
+
+.price__badges {
+  flex-direction: row-reverse;
+}
+
+/* Quick add button */
+.quick-add {
+  direction: rtl;
+}
+
+/* ── 8. FOOTER ──────────────────────────────────────────── */
+.footer {
+  direction: rtl;
+  text-align: right;
+}
+
+.footer__content-top {
+  direction: rtl;
+}
+
+.footer-block {
+  text-align: right;
+}
+
+.footer-block__heading {
+  text-align: right;
+}
+
+.footer-block__list {
+  text-align: right;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.footer__column {
+  text-align: right;
+}
+
+.footer__copyright {
+  direction: rtl;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.footer__payment {
+  flex-direction: row-reverse;
+}
+
+/* Social icons */
+.list--social {
+  flex-direction: row-reverse;
+}
+
+/* ── 9. FORMS ───────────────────────────────────────────── */
+.field {
+  direction: rtl;
+}
+
+.field__input,
+.select__select,
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="search"] {
+  direction: rtl;
+  text-align: right;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.field__label {
+  right: 1.5rem;
+  left: auto;
+  transform-origin: right top;
+}
+
+.field__input:focus ~ .field__label,
+.field__input:not(:placeholder-shown) ~ .field__label {
+  transform: translateY(-1.3rem) scale(0.75);
+  right: 1.5rem;
+  left: auto;
+}
+
+/* Checkbox / Radio */
+.checkbox-wrapper,
+.radio-wrapper {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 0;
+  margin-left: 0.8rem;
+}
+
+/* ── 10. BREADCRUMBS ────────────────────────────────────── */
+.breadcrumbs {
+  direction: rtl;
+  text-align: right;
+}
+
+.breadcrumbs__item + .breadcrumbs__item::before {
+  content: "‹";
+  margin: 0 0.4rem;
+}
+
+/* ── 11. PAGINATION ─────────────────────────────────────── */
+.pagination {
+  direction: rtl;
+}
+
+.pagination__item--prev .icon {
+  transform: rotate(180deg);
+}
+
+.pagination__item--next .icon {
+  transform: rotate(180deg);
+}
+
+/* ── 12. ICONS & ARROWS ─────────────────────────────────── */
+/* Flip all directional chevrons/carets */
+.icon-caret,
+.icon-chevron-right,
+.icon-arrow-right {
+  transform: scaleX(-1);
+}
+
+/* But NOT spinner, close, search icons */
+.icon-close,
+.icon-search,
+.icon-spinner,
+.icon-star,
+.icon-checkmark {
+  transform: none !important;
+}
+
+/* ── 13. SLIDESHOW / BANNERS ────────────────────────────── */
+.banner__content {
+  direction: rtl;
+  text-align: right;
+}
+
+.banner__box {
+  text-align: right;
+}
+
+.slideshow__text-wrapper {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Slideshow navigation arrows */
+.slideshow__prev .icon,
+.slider__prev .icon {
+  transform: scaleX(-1);
+}
+
+.slideshow__next .icon,
+.slider__next .icon {
+  transform: scaleX(-1);
+}
+
+/* ── 14. IMAGE WITH TEXT ────────────────────────────────── */
+.image-with-text__content {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ── 15. MULTICOLUMN ────────────────────────────────────── */
+.multicolumn-list__item {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ── 16. NEWSLETTER / EMAIL SIGNUP ─────────────────────── */
+.newsletter-form {
+  direction: rtl;
+}
+
+.newsletter-form__field-wrapper {
+  flex-direction: row-reverse;
+}
+
+/* ── 17. PREDICTIVE SEARCH ──────────────────────────────── */
+.predictive-search {
+  direction: rtl;
+  text-align: right;
+}
+
+.predictive-search__item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.predictive-search__item-content {
+  text-align: right;
+}
+
+/* ── 18. NOTIFICATION / TOAST ───────────────────────────── */
+.cart-notification {
+  direction: rtl;
+  text-align: right;
+}
+
+.cart-notification-product {
+  flex-direction: row-reverse;
+}
+
+.cart-notification-product__image {
+  margin-right: 0;
+  margin-left: 1.5rem;
+}
+
+/* ── 19. MODAL ──────────────────────────────────────────── */
+.modal__content {
+  direction: rtl;
+  text-align: right;
+}
+
+.modal__close-button {
+  right: auto;
+  left: 1.5rem;
+}
+
+/* ── 20. SKIP LINK ──────────────────────────────────────── */
+.skip-to-content-link {
+  right: 1.5rem;
+  left: auto;
+}
+
+/* ── 21. COLLAPSIBLE CONTENT ────────────────────────────── */
+.collapsible-content__heading {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.collapsible-content__summary .icon-caret {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* ── 22. FEATURED PRODUCT / PRODUCT FORM ───────────────── */
+.featured-product {
+  direction: rtl;
+}
+
+.product-form {
+  direction: rtl;
+}
+
+.product-form__buttons {
+  direction: rtl;
+}
+
+/* ── 23. RICH TEXT SECTION ──────────────────────────────── */
+.rich-text__blocks {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ── 24. MOBILE RESPONSIVE ──────────────────────────────── */
+@media screen and (max-width: 749px) {
+  .header__icons {
+    flex-direction: row-reverse;
+  }
+
+  .cart-drawer {
+    left: 0;
+    right: auto;
+    transform: translateX(-100%);
+  }
+
+  .menu-drawer {
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+  }
+
+  .footer__content-top {
+    text-align: right;
+  }
+}
+
+/* ── 25. UTILITY OVERRIDES ──────────────────────────────── */
+/* Keep numbers and prices LTR within RTL context */
+.price,
+.price__regular,
+.price__sale,
+.price__compare,
+.price-item,
+.cart-item__price,
+.totals__subtotal-value,
+bdi {
+  unicode-bidi: embed;
+  direction: ltr;
+  display: inline-block;
+}
+
+/* Keep quantity inputs LTR */
+.quantity__input {
+  direction: ltr;
+  text-align: center;
+}
+
+/* Ensure list items align right */
+ul, ol {
+  padding-right: 2rem;
+  padding-left: 0;
+}
+
+/* Table RTL */
+table {
+  direction: rtl;
+}
+
+th, td {
+  text-align: right;
+}
+
+/* ── 26. LOCALIZATION SELECTOR ──────────────────────────── */
+.localization-form {
+  direction: rtl;
+}
+
+.disclosure__button {
+  flex-direction: row-reverse;
+}

@@ -412,3 +412,39 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
     margin-left: 0;
   }
 }
+
+/* ── RTL Cart Drawer Fixes ── */
+[dir="rtl"] cart-drawer {
+  direction: rtl;
+}
+[dir="rtl"] .cart-drawer {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+}
+[dir="rtl"] .cart-drawer.active {
+  transform: translateX(0);
+}
+[dir="rtl"] .cart-drawer__header {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .cart-drawer__close {
+  right: auto;
+  left: 1.5rem;
+}
+[dir="rtl"] .cart-items {
+  direction: rtl;
+}
+[dir="rtl"] .cart-item {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .cart-item__image-container {
+  margin-right: 0;
+  margin-left: 1.5rem;
+}
+[dir="rtl"] .cart-item__details {
+  text-align: right;
+}
+[dir="rtl"] .totals {
+  flex-direction: row-reverse;
+}

@@ -241,3 +241,35 @@ details[open].menu-opening > .menu-drawer__submenu {
     transition: none !important;
   }
 }
+
+/* ── RTL Menu Drawer Fixes ── */
+[dir="rtl"] .menu-drawer-container {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .menu-drawer {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+}
+[dir="rtl"] .menu-drawer.is-open,
+[dir="rtl"] details[open] > .menu-drawer {
+  transform: translateX(0);
+}
+[dir="rtl"] .menu-drawer__close-button {
+  left: 1.5rem;
+  right: auto;
+}
+[dir="rtl"] .menu-drawer__navigation-items {
+  text-align: right;
+}
+[dir="rtl"] .menu-drawer__menu-item {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .menu-drawer__menu-item .icon-caret {
+  transform: scaleX(-1);
+  margin-left: 0;
+  margin-right: auto;
+}
+[dir="rtl"] .menu-drawer__submenu {
+  text-align: right;
+}
