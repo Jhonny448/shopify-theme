@@ -28,7 +28,9 @@ if (!customElements.get('product-modal')) {
         activeMedia.scrollIntoView();
 
         const container = this.querySelector('[role="document"]');
-        container.scrollLeft = (activeMedia.width - container.clientWidth) / 2;
+        // Center horizontally; in RTL the scroll axis is negative.
+        const overflow = (activeMedia.width - container.clientWidth) / 2;
+        container.scrollLeft = document.documentElement.getAttribute('dir') === 'rtl' ? -overflow : overflow;
 
         if (
           activeMedia.nodeName == 'DEFERRED-MEDIA' &&

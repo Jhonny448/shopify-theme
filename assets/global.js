@@ -750,9 +750,10 @@ class SliderComponent extends HTMLElement {
   initPages() {
     this.sliderItemsToShow = Array.from(this.sliderItems).filter((element) => element.clientWidth > 0);
     if (this.sliderItemsToShow.length < 2) return;
-    this.sliderItemOffset = this.sliderItemsToShow[1].offsetLeft - this.sliderItemsToShow[0].offsetLeft;
+    // Math.abs keeps the offset positive in RTL, where item order along the X axis is mirrored.
+    this.sliderItemOffset = Math.abs(this.sliderItemsToShow[1].offsetLeft - this.sliderItemsToShow[0].offsetLeft);
     this.slidesPerPage = Math.floor(
-      (this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) / this.sliderItemOffset
+      (this.slider.clientWidth - this.slideStartOffset(this.sliderItemsToShow[0])) / this.sliderItemOffset
     );
     this.totalPages = this.sliderItemsToShow.length - this.slidesPerPage + 1;
     this.update();
@@ -763,13 +764,25 @@ class SliderComponent extends HTMLElement {
     this.initPages();
   }
 
+  // RTL helpers: in RTL scrollLeft is negative and offsetLeft is measured from the
+  // (mirrored) left edge, so we normalize both to a positive "distance from start".
+  get isRTL() {
+    return document.documentElement.getAttribute('dir') === 'rtl';
+  }
+
+  slideStartOffset(element) {
+    return this.isRTL
+      ? this.slider.scrollWidth - element.offsetLeft - element.clientWidth
+      : element.offsetLeft;
+  }
+
   update() {
     // Temporarily prevents unneeded updates resulting from variant changes
     // This should be refactored as part of https://github.com/Shopify/dawn/issues/2057
     if (!this.slider || !this.nextButton) return;
 
     const previousPage = this.currentPage;
-    this.currentPage = Math.round(this.slider.scrollLeft / this.sliderItemOffset) + 1;
+    this.currentPage = Math.round(Math.abs(this.slider.scrollLeft) / this.sliderItemOffset) + 1;
 
     if (this.currentPageElement && this.pageTotalElement) {
       this.currentPageElement.textContent = this.currentPage;
@@ -789,7 +802,7 @@ class SliderComponent extends HTMLElement {
 
     if (this.enableSliderLooping) return;
 
-    if (this.isSlideVisible(this.sliderItemsToShow[0]) && this.slider.scrollLeft === 0) {
+    if (this.isSlideVisible(this.sliderItemsToShow[0]) && Math.abs(this.slider.scrollLeft) <= 1) {
       this.prevButton.setAttribute('disabled', 'disabled');
     } else {
       this.prevButton.removeAttribute('disabled');
@@ -803,17 +816,19 @@ class SliderComponent extends HTMLElement {
   }
 
   isSlideVisible(element, offset = 0) {
-    const lastVisibleSlide = this.slider.clientWidth + this.slider.scrollLeft - offset;
-    return element.offsetLeft + element.clientWidth <= lastVisibleSlide && element.offsetLeft >= this.slider.scrollLeft;
+    const scrollDistance = Math.abs(this.slider.scrollLeft);
+    const lastVisibleSlide = this.slider.clientWidth + scrollDistance - offset;
+    const start = this.slideStartOffset(element);
+    return start + element.clientWidth <= lastVisibleSlide && start >= scrollDistance;
   }
 
   onButtonClick(event) {
     event.preventDefault();
     const step = event.currentTarget.dataset.step || 1;
-    this.slideScrollPosition =
-      event.currentTarget.name === 'next'
-        ? this.slider.scrollLeft + step * this.sliderItemOffset
-        : this.slider.scrollLeft - step * this.sliderItemOffset;
+    // In RTL the X axis is mirrored: advancing ("next") decreases scrollLeft.
+    const direction = event.currentTarget.name === 'next' ? 1 : -1;
+    const delta = (this.isRTL ? -1 : 1) * direction * step * this.sliderItemOffset;
+    this.slideScrollPosition = this.slider.scrollLeft + delta;
     this.setSlidePosition(this.slideScrollPosition);
   }
 

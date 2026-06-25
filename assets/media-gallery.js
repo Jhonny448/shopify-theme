@@ -54,7 +54,12 @@ if (!customElements.get('media-gallery')) {
         this.preventStickyHeader();
         window.setTimeout(() => {
           if (!this.mql.matches || this.elements.thumbnails) {
-            activeMedia.parentElement.scrollTo({ left: activeMedia.offsetLeft });
+            const gallerySlider = activeMedia.parentElement;
+            const galleryLeft =
+              document.documentElement.getAttribute('dir') === 'rtl'
+                ? -(gallerySlider.scrollWidth - activeMedia.offsetLeft - activeMedia.offsetWidth)
+                : activeMedia.offsetLeft;
+            gallerySlider.scrollTo({ left: galleryLeft });
           }
           const activeMediaRect = activeMedia.getBoundingClientRect();
           // Don't scroll if the image is already in view
@@ -79,7 +84,12 @@ if (!customElements.get('media-gallery')) {
         thumbnail.querySelector('button').setAttribute('aria-current', true);
         if (this.elements.thumbnails.isSlideVisible(thumbnail, 10)) return;
 
-        this.elements.thumbnails.slider.scrollTo({ left: thumbnail.offsetLeft });
+        const thumbSlider = this.elements.thumbnails.slider;
+        const thumbLeft =
+          document.documentElement.getAttribute('dir') === 'rtl'
+            ? -(thumbSlider.scrollWidth - thumbnail.offsetLeft - thumbnail.offsetWidth)
+            : thumbnail.offsetLeft;
+        thumbSlider.scrollTo({ left: thumbLeft });
       }
 
       announceLiveRegion(activeItem, position) {
