@@ -197,14 +197,37 @@ cart-drawer {
   text-align: right;
 }
 
+/* Subtotal row: label on the RIGHT, amount on the LEFT.
+   direction:rtl alone does this (do NOT add row-reverse — it double-flips). */
 .totals {
   direction: rtl;
-  flex-direction: row-reverse;
+}
+
+.totals > * + * {
+  margin-left: 0;
+  margin-right: 2rem;
 }
 
 .totals__subtotal-value {
   direction: ltr;
   display: inline-block;
+}
+
+/* ── Cart table header: "מוצר" on the right, "סה״כ" on the left ── */
+.cart-items thead th {
+  text-align: right;
+}
+
+.cart-drawer .cart-items thead th:nth-child(2) {
+  padding-left: unset;
+  padding-right: 0;
+}
+
+/* `.right` is used only in the cart (total column); flip it to the left edge */
+.cart-items thead th.right,
+.cart-item__totals.right,
+td.cart-item__totals {
+  text-align: left;
 }
 
 /* ── 6. SEARCH MODAL ────────────────────────────────────── */
@@ -747,7 +770,3 @@ th, td {
   pointer-events: none;
 }
 
-/* ── Generic: flip floated/right-aligned helpers ─────────── */
-.right {
-  text-align: right;
-}
