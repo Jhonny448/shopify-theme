@@ -31,29 +31,30 @@ p, a, span, li, label, td, th, blockquote, figcaption {
   font-family: 'Heebo', sans-serif;
 }
 
-/* ── 3. HEADER GRID — RTL SWAP ─────────────────────────── */
+/* ── 3. HEADER — let direction:rtl flip the grid naturally ─ */
 /*
-  base.css grid-template-areas: 'left-icons heading icons'
-  left-icons = hamburger (header-drawer)  → should be on RIGHT in RTL
-  icons      = cart/search/account        → should be on LEFT in RTL
-
-  Strategy: swap grid-area assignments between the two elements.
-  hamburger gets grid-area: icons  (which has justify-self: end → RIGHT)
-  cart/search gets grid-area: left-icons (which has justify-self: start → LEFT)
-*/
+  base.css grid-template-areas: 'left-icons heading icons'.
+  With direction:rtl the grid auto-mirrors:
+    left-icons (hamburger)        → RIGHT
+    icons      (cart/search)      → LEFT
+  So we DO NOT swap grid-area (that double-flips and lands the hamburger
+  back on the left). We only mirror the physical margins/padding that do
+  not flip on their own. !important is needed to beat the inline <style>
+  in sections/header.liquid, which loads after this file. */
 
 header-drawer {
-  grid-area: icons !important;
-  justify-self: end !important;
-  margin-right: -1.2rem !important;
   margin-left: 0 !important;
+  margin-right: -1.2rem !important;
 }
 
 .header__icons {
-  grid-area: left-icons !important;
-  justify-self: start !important;
   padding-right: 0 !important;
   padding-left: 0.8rem !important;
+}
+
+.header__icon--cart {
+  margin-right: 0 !important;
+  margin-left: -1.2rem !important;
 }
 
 /* Logo — always centered */
@@ -71,15 +72,17 @@ header-drawer {
 }
 
 /* ── 4. MENU DRAWER — slides from RIGHT ─────────────────── */
+/* !important: component-menu-drawer.css loads in the body, after this file. */
 .menu-drawer {
-  right: 0;
-  left: auto;
+  right: 0 !important;
+  left: auto !important;
   transform: translateX(100%);
 }
 
-details[open] > .menu-drawer,
+.js details[open] > .menu-drawer,
+.js details[open].menu-opening > .menu-drawer,
 .menu-drawer.is-open {
-  transform: translateX(0);
+  transform: translateX(0) !important;
 }
 
 .menu-drawer__inner-container {
@@ -111,30 +114,36 @@ details[open] > .menu-drawer,
   text-align: right;
 }
 
-/* ── 5. CART DRAWER — slides from LEFT ──────────────────── */
+/* ── 5. CART DRAWER — slides from LEFT in RTL ───────────── */
+/*
+  The overlay (.drawer) has justify-content:flex-end, which in RTL puts the
+  panel on the LEFT automatically. The sliding element is .drawer__inner
+  (translateX), NOT .cart-drawer. In LTR it hides off the RIGHT
+  (translateX(100%)); in RTL it must hide off the LEFT (translateX(-100%)).
+  component-cart-drawer.css loads in <head> before this file, so equal
+  specificity here wins without !important. */
 cart-drawer {
   direction: rtl;
 }
 
-.cart-drawer {
-  right: auto;
-  left: 0;
+.drawer__inner {
   transform: translateX(-100%);
+  border-right: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border-left: 0;
 }
 
-.cart-drawer.active,
-.cart-drawer.is-open {
+.drawer.active .drawer__inner {
   transform: translateX(0);
 }
 
-.cart-drawer__header {
-  direction: rtl;
-  flex-direction: row-reverse;
+.drawer__close {
+  right: auto;
+  left: -10px;
 }
 
-.cart-drawer__close {
+.cart-drawer__warnings .drawer__close {
   right: auto;
-  left: 1.5rem;
+  left: 5px;
 }
 
 .cart-items {
@@ -574,25 +583,10 @@ th, td {
 
 /* ── 29. MOBILE RESPONSIVE ───────────────────────────────── */
 @media screen and (max-width: 749px) {
-  header-drawer {
-    grid-area: icons !important;
-    justify-self: end !important;
-  }
-
-  .header__icons {
-    grid-area: left-icons !important;
-    justify-self: start !important;
-  }
-
-  .cart-drawer {
-    left: 0;
-    right: auto;
-    transform: translateX(-100%);
-  }
-
+  /* No header grid-area swap here — direction:rtl flips it naturally (see §3). */
   .menu-drawer {
-    right: 0;
-    left: auto;
+    right: 0 !important;
+    left: auto !important;
     transform: translateX(100%);
   }
 
@@ -612,20 +606,34 @@ th, td {
 }
 
 /* ── Slider buttons (carousel prev/next) — swap directions ─ */
+/* component-slider.css loads in the body (after this file), so !important
+   is required. With direction:rtl the buttons already reposition
+   (next on the left, prev on the right); here we flip the arrow each points:
+   next → points left, prev → points right. */
 .slider-button--next .icon {
-  transform: rotate(90deg);
+  transform: rotate(90deg) !important;
 }
 
 .slider-button--prev .icon {
-  transform: rotate(-90deg);
+  transform: rotate(-90deg) !important;
 }
 
 .slider-button--next:not([disabled]):hover .icon {
-  transform: rotate(90deg) scale(1.1);
+  transform: rotate(90deg) scale(1.1) !important;
 }
 
 .slider-button--prev:not([disabled]):hover .icon {
-  transform: rotate(-90deg) scale(1.1);
+  transform: rotate(-90deg) scale(1.1) !important;
+}
+
+/* Keep the "current / total" counter in LTR so it doesn't read as "3 / 1" */
+.slider-counter,
+.slider-counter--current,
+.slider-counter--total {
+  direction: ltr;
+}
+.slider-counter__link {
+  direction: ltr;
 }
 
 /* ── Facets / filters ────────────────────────────────────── */
@@ -644,12 +652,12 @@ th, td {
 }
 
 .facets__summary {
-  flex-direction: row-reverse;
+  flex-direction: row-reverse !important;
 }
 
 .facets__summary .svg-wrapper {
-  margin-left: 0;
-  margin-right: auto;
+  margin-left: 0 !important;
+  margin-right: auto !important;
 }
 
 .facets-container .facets__price {
