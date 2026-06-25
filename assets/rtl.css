@@ -85,33 +85,40 @@ header-drawer {
   transform: translateX(0) !important;
 }
 
-.menu-drawer__inner-container {
-  direction: rtl;
-  text-align: right;
-}
-
-.menu-drawer__close-button {
-  left: 1.5rem;
-  right: auto;
-}
-
-.menu-drawer__navigation-items {
-  text-align: right;
+/* !important: component-menu-drawer.css loads in the body, after this file. */
+.menu-drawer,
+.menu-drawer__inner-container,
+.menu-drawer__navigation,
+.menu-drawer__menu,
+.menu-drawer__submenu {
+  direction: rtl !important;
+  text-align: right !important;
 }
 
 .menu-drawer__menu-item {
-  flex-direction: row-reverse;
+  text-align: right !important;
 }
 
-.menu-drawer__menu-item .icon-caret {
-  transform: scaleX(-1);
-  margin-left: 0;
-  margin-right: auto;
+/* Items that open a submenu: caret arrow moves to the LEFT edge */
+.menu-drawer summary.menu-drawer__menu-item {
+  padding-right: 3rem !important;
+  padding-left: 5.2rem !important;
 }
 
-.menu-drawer__submenu {
-  direction: rtl;
-  text-align: right;
+.menu-drawer__menu-item > .svg-wrapper {
+  right: auto !important;
+  left: 3rem !important;
+}
+
+/* Submenu "back" button: align right, arrow points right */
+.menu-drawer__close-button {
+  text-align: right !important;
+}
+
+.menu-drawer__close-button .svg-wrapper {
+  transform: rotate(0deg);
+  margin-right: 0;
+  margin-left: 1rem;
 }
 
 /* ── 5. CART DRAWER — slides from LEFT in RTL ───────────── */
@@ -150,22 +157,39 @@ cart-drawer {
   direction: rtl;
 }
 
+/* .cart-item is a CSS grid; direction:rtl mirrors its columns so the
+   product image lands on the RIGHT automatically. */
 .cart-item {
   direction: rtl;
-  flex-direction: row-reverse;
 }
 
-.cart-item__image-container {
-  margin-right: 0;
-  margin-left: 1.5rem;
+.cart-item__media {
+  margin: 0;
 }
 
-.cart-item__details {
+.cart-item__details,
+.cart-item__name,
+.cart-item__options,
+.cart-item__property-list,
+.product-option {
   text-align: right;
 }
 
+/* Price column sits at the inline-start edge (left in RTL) */
+.cart-item__totals {
+  justify-content: flex-end;
+  text-align: left;
+}
+
+/* Quantity stepper stays LTR (− value +); remove button beside it */
 .cart-item__quantity-wrapper {
-  flex-direction: row-reverse;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.cart-quantity {
+  direction: ltr;
 }
 
 .cart-drawer__footer {
