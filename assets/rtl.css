@@ -76,7 +76,9 @@ header-drawer {
 .menu-drawer {
   right: 0 !important;
   left: auto !important;
-  transform: translateX(100%);
+  /* closed state must hide off the RIGHT; !important beats body-loaded
+     component-menu-drawer.css which sets translateX(-100%) (off-left). */
+  transform: translateX(100%) !important;
 }
 
 .js details[open] > .menu-drawer,
@@ -634,7 +636,7 @@ th, td {
   .menu-drawer {
     right: 0 !important;
     left: auto !important;
-    transform: translateX(100%);
+    transform: translateX(100%) !important;
   }
 
   .footer__content-top {
