@@ -1186,6 +1186,28 @@
         "payment_not_processed_title": "לא ניתן היה לעבד את התשלום שלך",
         "payment_not_processed_text": "לא חויבת. חזור לעגלה שלך להשלמת הרכישה.",
         "return_to_cart_button_label": "חזור לעגלה"
+      },
+      "thank_you": {
+        "title": "תודה על הרכישה שלך!",
+        "confirmation_email_sent_text": "אימייל אישור נשלח אל {{email}}",
+        "return_to_store_link_label": "המשך בקניות",
+        "print_link_label": "הדפס קבלה",
+        "payment_information_title": "פרטי תשלום",
+        "shipping_information_title": "פרטי משלוח",
+        "page_title": "תודה, {{display_name}}!",
+        "page_title_no_name": "תודה!",
+        "cancelled_page_title": "ההזמנה בוטלה",
+        "failed_pending_payment_page_title": "יש בעיה עם התשלום שלך",
+        "customer_information_title": "פרטי הזמנה",
+        "contact_information_title": "פרטי יצירת קשר",
+        "billing_address_title": "כתובת לחיוב",
+        "cashback_notice": "תקבל את ה-Cashback שלך תוך 30 יום",
+        "company_location_title": "מיקום",
+        "shipping_address_title": "כתובת למשלוח",
+        "shipping_address_map_title": "מפת גוגל המציגה את כתובת המשלוח: {{address}}",
+        "payment_method_title": "שיטת תשלום",
+        "payment_method_not_charged": "לא חויב",
+        "shipping_method_title": "שיטת משלוח"
       }
     }
   }
