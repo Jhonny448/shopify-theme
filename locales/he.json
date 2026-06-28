@@ -1083,7 +1083,8 @@
           "one": "הצג {{count}} נוסף",
           "other": "הצג {{count}} נוספים"
         },
-        "title": "תשלום"
+        "title": "תשלום",
+        "card_security_notice": "כל העסקאות מאובטחות ומוצפנות."
       },
       "billing": {
         "billing_address_title": "חיוב אל",
