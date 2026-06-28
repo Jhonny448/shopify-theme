@@ -3,51 +3,56 @@
 .sci__panels {
   display: flex;
   flex-direction: column;
-  gap: 3.2rem;
+  gap: 2.4rem;
 }
 
+/* Split layout: image 40% | text 60%, side by side on every screen.
+   --media-end flips the sides (image left, text right in RTL). */
 .sci__panel {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.6rem;
+  grid-template-columns: 40% 60%;
   align-items: center;
+  gap: 1.4rem;
 }
+.sci__panel--media-end {
+  grid-template-columns: 60% 40%;
+}
+.sci__panel--media-end .sci__media { order: 2; }
 
-/* ---- Character image ---- */
 .sci__media {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  align-self: center;
+  text-align: center;
 }
 .sci__img {
-  width: auto;
-  max-width: 24rem;
-  max-height: 26rem;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  max-height: 32rem;
   object-fit: contain;
 }
 
 /* ---- Wavy card ---- */
 .sci__card {
   position: relative;
-  color: var(--np-green-soft);   /* drives the wave fill via currentColor */
+  color: var(--np-green-soft); /* drives wave fill via currentColor */
   filter: drop-shadow(0 1rem 2.4rem rgba(18, 18, 18, 0.08));
 }
 .sci__card-body {
   background: var(--np-green-soft);
-  padding: 0.4rem 2.4rem 1rem;
+  padding: 0.4rem 1.6rem 1rem;
   text-align: start;
 }
 .sci__wave-wrap { display: block; line-height: 0; }
-.sci__wave { display: block; width: 100%; height: 1.8rem; }
+.sci__wave { display: block; width: 100%; height: 1.4rem; }
 .sci__wave-wrap--bottom .sci__wave { transform: scaleY(-1); }
 
-.sci__heading { margin: 0 0 1rem; color: var(--np-green-dark); line-height: 1.2; }
-.sci__text { margin: 0; line-height: 1.6; color: rgb(var(--color-foreground)); opacity: 0.9; }
-.sci__text p { margin: 0 0 1rem; }
+.sci__heading { margin: 0 0 0.8rem; color: var(--np-green-dark); line-height: 1.2; font-size: 1.7rem; }
+.sci__text { margin: 0; line-height: 1.5; color: rgb(var(--color-foreground)); opacity: 0.9; font-size: 1.4rem; }
+.sci__text p { margin: 0 0 0.8rem; }
 .sci__text p:last-child { margin-bottom: 0; }
 
 /* ---- CTA button (NatPat pill) ---- */
-.sci__cta { text-align: center; margin-block-start: 3.6rem; }
+.sci__cta { text-align: center; margin-block-start: 3.2rem; }
 .sci__btn {
   background: var(--np-green);
   color: #fff;
@@ -57,20 +62,15 @@
   font-size: 1.7rem;
   font-weight: 700;
   box-shadow: 0 0.6rem 1.6rem rgba(46, 68, 212, 0.28);
-  min-width: min(36rem, 90%);
 }
 @media (hover: hover) {
   .sci__btn:hover { background: var(--np-green-dark); transform: translateY(-0.2rem); }
 }
 
-/* ---- Desktop: image beside the card, alternating sides ---- */
 @media screen and (min-width: 750px) {
-  .sci__panel {
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 3.2rem;
-  }
-  .sci__panel--media-end { grid-template-columns: 1.15fr 0.85fr; }
-  .sci__panel--media-end .sci__media { order: 2; }
-  .sci__img { max-width: 30rem; max-height: 34rem; }
-  .sci__card-body { padding: 0.4rem 3.2rem 1.2rem; }
+  .sci__panels { gap: 4rem; }
+  .sci__panel { gap: 3.2rem; }
+  .sci__heading { font-size: 2.4rem; }
+  .sci__text { font-size: 1.6rem; }
+  .sci__card-body { padding: 0.6rem 3.2rem 1.4rem; }
 }
