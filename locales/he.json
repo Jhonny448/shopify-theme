@@ -780,6 +780,30 @@
         },
         "empty_cart_label": "העגלה שלך ריקה",
         "out_of_stock_in_context_label": "מוצר זה אינו זמין במדינה/אזור שלך."
+      },
+      "contextual_availability": {
+        "all_products_in_cart_unavailable": {
+          "one": "שיטת המשלוח שנבחרה אינה זמינה עוד עבור פריט זה.",
+          "other": "שיטת המשלוח שנבחרה אינה זמינה עוד עבור פריטים אלה."
+        },
+        "unavailable_label": "לא זמין"
+      },
+      "deliverability": {
+        "not_deliverable": {
+          "label": "אין משלוח"
+        }
+      },
+      "order_summary": {
+        "title": "סיכום הזמנה",
+        "group_title_label": "חלק מ-\"{{group_title}}\"",
+        "for_add_on": "עבור: {{group_title}}",
+        "from_shop_heading": "מ-{{shop_name}}",
+        "from_other_stores_heading": "מחנויות אחרות",
+        "from_multiple_stores_heading": "ממספר חנויות",
+        "order_name_label": "הזמנה {{name}}",
+        "shopping_cart_label": "עגלת קניות",
+        "discount_title": "הנחה",
+        "discount_label": "קוד הנחה"
       }
     }
   }
