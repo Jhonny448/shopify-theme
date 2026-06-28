@@ -917,7 +917,34 @@
         "error_duties_tooltip": "הזמנה זו נשלחת ממדינה אחרת, ולכן עשויים לחול מכסים ומיסים במסירה.",
         "may_be_charged_on_delivery": "עשוי להיגבות במסירה",
         "total_updated_label_with_price": "מחיר כולל מעודכן: {{totalPrice}}",
-        "updated_shipping_method": "שיטת משלוח מעודכנת: {{shipping_method}}"
+        "updated_shipping_method": "שיטת משלוח מעודכנת: {{shipping_method}}",
+        "number_items": {
+          "one": "פריט {{count}}",
+          "other": "פריטים {{count}}"
+        },
+        "view_all_items": {
+          "one": "הצג פריט {{count}}",
+          "other": "הצג את כל {{count}} הפריטים"
+        },
+        "more_items_modal": {
+          "search_item": "חיפוש",
+          "clear_search": "נקה חיפוש",
+          "empty_results": "לא נמצאו תוצאות עבור \"{{searchText}}\". בדוק את האיות או נסה מילה אחרת.",
+          "number_items_shown": "{{shownNumber}} מתוך {{totalNumber}} פריטים"
+        },
+        "discount_title_stacking": {
+          "one": "הנחה",
+          "other": "הנחות"
+        },
+        "recurring_payments": "תשלומים חוזרים",
+        "deferred_total_due_date_label": "לתשלום ב-{{date}}",
+        "deferred_total_due_date_label_next": "לתשלום ב-{{date}}",
+        "full_price": "מחיר מלא: {{price}}",
+        "custom_discount": "הנחה מותאמת אישית",
+        "component_quantity_title": "{{quantity}} × {{product_title}}",
+        "alternative_payment_currency_total": "יחויב כ-{{amount_due}}",
+        "pay_merchant_label": "שלם ל-{{merchant_name}}",
+        "discount_applies_to_subscription_items_only": "הנחה זו חלה על פריטי מנוי בלבד"
       }
     }
   }
