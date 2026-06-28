@@ -16,6 +16,14 @@
     --np-green: {{ section.settings.accent | default: '#2e44d4' }};
     --np-green-dark: {{ section.settings.accent | default: '#2e44d4' | color_darken: 12 }};
     --np-green-soft: {{ section.settings.accent | default: '#2e44d4' | color_lighten: 45 }};
+    --sci-img-w: {{ section.settings.image_width | default: 40 }}%;
+    --sci-text-w: {{ 100 | minus: section.settings.image_width }}%;
+    {%- case section.settings.image_size -%}
+      {%- when 'small' -%}--sci-img-maxh: 16rem;
+      {%- when 'large' -%}--sci-img-maxh: 36rem;
+      {%- when 'adapt' -%}--sci-img-maxh: 60rem;
+      {%- else -%}--sci-img-maxh: 24rem;
+    {%- endcase -%}
   }
 {%- endstyle -%}
 
@@ -85,6 +93,18 @@
       "default": "h1"
     },
     { "type": "text", "id": "subtext", "label": "Subtext" },
+    { "type": "header", "content": "Image" },
+    {
+      "type": "select", "id": "image_size", "label": "Image size",
+      "options": [
+        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    { "type": "range", "id": "image_width", "min": 25, "max": 60, "step": 5, "unit": "%", "label": "Image width (desktop split)", "default": 40 },
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "גלו את כל המוצרים" },
     { "type": "url", "id": "button_link", "label": "Button link" },
