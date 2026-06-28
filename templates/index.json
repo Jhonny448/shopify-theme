@@ -236,6 +236,7 @@
         "panel_NcMFH4": {
           "type": "panel",
           "settings": {
+            "image": "shopify://shop_images/pueplw.png",
             "image_position": "end",
             "heading": "טכנולוגיה ידידותית לסביבה",
             "text": "<p>בד במבוק מתכלה שמשחרר את הריח באופן מבוקר — חדשני, בר-קיימא, ובטוח למגע עם העור הרגיש של הילדים.</p>"
