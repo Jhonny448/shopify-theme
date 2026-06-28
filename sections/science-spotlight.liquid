@@ -18,21 +18,34 @@
     --np-green-soft: {{ section.settings.accent | default: '#2e44d4' | color_lighten: 45 }};
     --sci-img-w: {{ section.settings.image_width | default: 40 }}%;
     --sci-text-w: {{ 100 | minus: section.settings.image_width }}%;
+    --sci-gap: {{ section.settings.panel_gap }}px;
+    --sci-valign: {{ section.settings.vertical_align }};
+    --sci-img-justify: {{ section.settings.image_align }};
+    --sci-card-radius: {{ section.settings.card_radius }}px;
+    --sci-card-bg: {% if section.settings.card_color != blank %}{{ section.settings.card_color }}{% else %}var(--np-green-soft){% endif %};
     {%- case section.settings.image_size -%}
       {%- when 'small' -%}--sci-img-maxh: 16rem;
       {%- when 'large' -%}--sci-img-maxh: 36rem;
-      {%- when 'adapt' -%}--sci-img-maxh: 60rem;
+      {%- when 'xlarge' -%}--sci-img-maxh: 48rem;
+      {%- when 'adapt' -%}--sci-img-maxh: 80rem;
       {%- else -%}--sci-img-maxh: 24rem;
     {%- endcase -%}
   }
 {%- endstyle -%}
 
-{%- capture wave_svg -%}
+{%- capture wave_card -%}
 <svg class="sci__wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0,40 L0,20 C100,2 200,38 300,20 C400,2 500,38 600,20 C700,2 800,38 900,20 C1000,2 1100,38 1200,20 L1200,40 Z"/></svg>
 {%- endcapture -%}
+{%- capture wave_div -%}
+<svg viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0,0 H1200 V26 C1000,60 800,4 600,30 C400,54 200,2 0,28 Z"/></svg>
+{%- endcapture -%}
 
-<div class="np-section sci color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+<div class="np-section sci color-{{ section.settings.color_scheme }} gradient{% if section.settings.top_wave or section.settings.bottom_wave %} sci--has-divider{% endif %}">
+  {%- if section.settings.top_wave -%}
+    <div class="sci__divider sci__divider--top" style="color: {{ section.settings.wave_color }};">{{ wave_div }}</div>
+  {%- endif -%}
+
+  <div class="sci__inner page-width section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     {%- if section.settings.title != blank or section.settings.eyebrow != blank -%}
       <div class="np-head">
         {%- if section.settings.eyebrow != blank -%}<span class="np-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
@@ -45,24 +58,24 @@
 
     <div class="sci__panels">
       {%- for block in section.blocks -%}
-        <div class="sci__panel sci__panel--media-{{ block.settings.image_position }}" {{ block.shopify_attributes }}>
-          <div class="sci__media">
+        <div class="sci__panel sci__panel--media-{{ block.settings.image_position }}{% unless section.settings.show_card_waves %} sci__panel--flat{% endunless %}" {{ block.shopify_attributes }}>
+          <div class="sci__media" data-fit="{{ section.settings.image_fit }}">
             {%- if block.settings.image != blank -%}
               {%- assign sci_alt = block.settings.heading | strip_html | escape -%}
-              {{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '200,300,400,500,700', class: 'sci__img', alt: sci_alt }}
+              {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '200,300,400,500,700,800', class: 'sci__img', alt: sci_alt }}
             {%- else -%}
               {{ 'image' | placeholder_svg_tag: 'sci__img placeholder-svg' }}
             {%- endif -%}
           </div>
           <div class="sci__card">
-            <span class="sci__wave-wrap sci__wave-wrap--top">{{ wave_svg }}</span>
+            {%- if section.settings.show_card_waves -%}<span class="sci__wave-wrap sci__wave-wrap--top">{{ wave_card }}</span>{%- endif -%}
             <div class="sci__card-body">
               {%- if block.settings.heading != blank -%}
                 <h3 class="sci__heading inline-richtext">{{ block.settings.heading }}</h3>
               {%- endif -%}
               {%- if block.settings.text != blank -%}<div class="sci__text rte">{{ block.settings.text }}</div>{%- endif -%}
             </div>
-            <span class="sci__wave-wrap sci__wave-wrap--bottom">{{ wave_svg }}</span>
+            {%- if section.settings.show_card_waves -%}<span class="sci__wave-wrap sci__wave-wrap--bottom">{{ wave_card }}</span>{%- endif -%}
           </div>
         </div>
       {%- endfor -%}
@@ -76,6 +89,10 @@
       </div>
     {%- endif -%}
   </div>
+
+  {%- if section.settings.bottom_wave -%}
+    <div class="sci__divider sci__divider--bottom" style="color: {{ section.settings.wave_color }};">{{ wave_div }}</div>
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -93,6 +110,7 @@
       "default": "h1"
     },
     { "type": "text", "id": "subtext", "label": "Subtext" },
+
     { "type": "header", "content": "Image" },
     {
       "type": "select", "id": "image_size", "label": "Image size",
@@ -100,17 +118,48 @@
         { "value": "adapt", "label": "Adapt to image" },
         { "value": "small", "label": "Small" },
         { "value": "medium", "label": "Medium" },
-        { "value": "large", "label": "Large" }
+        { "value": "large", "label": "Large" },
+        { "value": "xlarge", "label": "Extra large" }
       ],
-      "default": "medium"
+      "default": "large"
     },
-    { "type": "range", "id": "image_width", "min": 25, "max": 60, "step": 5, "unit": "%", "label": "Image width (desktop split)", "default": 40 },
+    { "type": "range", "id": "image_width", "min": 20, "max": 65, "step": 5, "unit": "%", "label": "Image column width", "default": 40 },
+    {
+      "type": "select", "id": "image_fit", "label": "Image fit",
+      "options": [ { "value": "contain", "label": "Contain (full image)" }, { "value": "cover", "label": "Cover (fill, no gaps)" } ],
+      "default": "contain"
+    },
+    {
+      "type": "select", "id": "image_align", "label": "Image alignment",
+      "options": [ { "value": "center", "label": "Center" }, { "value": "flex-start", "label": "Start side" }, { "value": "flex-end", "label": "End side" } ],
+      "default": "center"
+    },
+    { "type": "range", "id": "panel_gap", "min": 0, "max": 64, "step": 2, "unit": "px", "label": "Gap between image and text", "default": 16 },
+
+    { "type": "header", "content": "Card" },
+    { "type": "checkbox", "id": "show_card_waves", "label": "Wavy card edges", "default": true },
+    { "type": "color", "id": "card_color", "label": "Card background (optional)" },
+    { "type": "range", "id": "card_radius", "min": 0, "max": 40, "step": 2, "unit": "px", "label": "Card corner radius", "default": 16 },
+    {
+      "type": "select", "id": "vertical_align", "label": "Vertical alignment",
+      "options": [ { "value": "center", "label": "Center" }, { "value": "start", "label": "Top" } ],
+      "default": "center"
+    },
+
+    { "type": "header", "content": "Section shape (puzzle)" },
+    { "type": "paragraph", "content": "Add a wave at the top/bottom so this section interlocks with the one above/below. Set the wave color to the neighbouring section's background." },
+    { "type": "checkbox", "id": "top_wave", "label": "Wave on top", "default": false },
+    { "type": "checkbox", "id": "bottom_wave", "label": "Wave on bottom", "default": false },
+    { "type": "color", "id": "wave_color", "label": "Wave color", "default": "#ffffff" },
+
     { "type": "header", "content": "Call to action" },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "גלו את כל המוצרים" },
     { "type": "url", "id": "button_link", "label": "Button link" },
+
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "accent", "label": "Accent color", "default": "#2e44d4" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+
     { "type": "header", "content": "Spacing" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
     { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 48 }
@@ -131,13 +180,13 @@
       ]
     }
   ],
-  "max_blocks": 4,
+  "max_blocks": 6,
   "presets": [
     {
       "name": "מדע ופיצ'רים (NatPat)",
       "blocks": [
         { "type": "panel", "settings": { "image_position": "start", "heading": "המדע שמאחורי המדבקות", "text": "<p>שמנים אתריים טבעיים בשחרור איטי לאורך כל היום — הגנה עדינה ויעילה, בלי DEET ובלי כימיקלים.</p>" } },
-        { "type": "panel", "settings": { "image_position": "end", "heading": "טכנולוגיה ידידותית לסביבה", "text": "<p>בד במבוק מתכלה שמשחרר את הריח באופן מבוקר — חדשני, בר-קיימא, ובטוח למגע עם העור הרגיש של הילדים.</p>" } }
+        { "type": "panel", "settings": { "image_position": "end", "heading": "טכנולוגיה ידידותית לסביבה", "text": "<p>בד במבוק מתכלה שמשחרר את הריח באופן מבוקר — חדשני, בר-קיימא, ובטוח לעור הרגיש של הילדים.</p>" } }
       ]
     }
   ]

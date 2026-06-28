@@ -1,4 +1,21 @@
+.sci { position: relative; }
+.sci__inner { position: relative; z-index: 1; }
 .sci__title { color: var(--np-green-dark); }
+
+/* ---- Section "puzzle" wave dividers (interlock with neighbours) ---- */
+.sci__divider {
+  position: absolute;
+  inset-inline: 0;
+  left: 0;
+  right: 0;
+  line-height: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.sci__divider svg { display: block; width: 100%; height: 3.5rem; }
+.sci__divider--top { top: -1px; }
+.sci__divider--bottom { bottom: -1px; }
+.sci__divider--bottom svg { transform: scaleY(-1); }
 
 .sci__panels {
   display: flex;
@@ -6,41 +23,49 @@
   gap: 2.4rem;
 }
 
-/* Split layout: image 40% | text 60%, side by side on every screen.
-   --media-end flips the sides (image left, text right in RTL). */
+/* Split layout: image | text, side by side, alternating sides. */
 .sci__panel {
   display: grid;
   grid-template-columns: var(--sci-img-w, 40%) var(--sci-text-w, 60%);
-  align-items: center;
-  gap: 1.4rem;
+  align-items: var(--sci-valign, center);
+  column-gap: var(--sci-gap, 16px);
+  gap: var(--sci-gap, 16px);
 }
 .sci__panel--media-end {
   grid-template-columns: var(--sci-text-w, 60%) var(--sci-img-w, 40%);
 }
 .sci__panel--media-end .sci__media { order: 2; }
 
+/* ---- Image ---- */
 .sci__media {
-  align-self: center;
-  text-align: center;
-  min-width: 0; /* allow the grid track to shrink instead of overflowing */
+  display: flex;
+  justify-content: var(--sci-img-justify, center);
+  align-items: center;
+  min-width: 0;
 }
 .sci__img {
-  display: inline-block;
+  display: block;
   width: 100%;
   height: auto;
   max-height: var(--sci-img-maxh, 24rem);
   object-fit: contain;
 }
+/* Cover = fill the column edge-to-edge (no white gaps) */
+.sci__media[data-fit="cover"] .sci__img {
+  height: var(--sci-img-maxh, 24rem);
+  object-fit: cover;
+  border-radius: var(--np-radius);
+}
 
 /* ---- Wavy card ---- */
 .sci__card {
   position: relative;
-  min-width: 0; /* prevent text from stretching the grid track sideways */
-  color: var(--np-green-soft); /* drives wave fill via currentColor */
+  min-width: 0;
+  color: var(--sci-card-bg, var(--np-green-soft)); /* drives wave fill */
   filter: drop-shadow(0 1rem 2.4rem rgba(18, 18, 18, 0.08));
 }
 .sci__card-body {
-  background: var(--np-green-soft);
+  background: var(--sci-card-bg, var(--np-green-soft));
   padding: 0.4rem 1.6rem 1rem;
   text-align: start;
   overflow-wrap: break-word;
@@ -49,6 +74,13 @@
 .sci__wave-wrap { display: block; line-height: 0; }
 .sci__wave { display: block; width: 100%; height: 1.4rem; }
 .sci__wave-wrap--bottom .sci__wave { transform: scaleY(-1); }
+
+/* Flat card (waves off): rounded card with shadow */
+.sci__panel--flat .sci__card { filter: none; }
+.sci__panel--flat .sci__card-body {
+  border-radius: var(--sci-card-radius, 16px);
+  box-shadow: var(--np-shadow);
+}
 
 .sci__heading { margin: 0 0 0.8rem; color: var(--np-green-dark); line-height: 1.2; font-size: 1.7rem; }
 .sci__text { margin: 0; line-height: 1.5; color: rgb(var(--color-foreground)); opacity: 0.9; font-size: 1.4rem; }
@@ -73,7 +105,7 @@
 
 @media screen and (min-width: 750px) {
   .sci__panels { gap: 4rem; }
-  .sci__panel { gap: 3.2rem; }
+  .sci__divider svg { height: 5.5rem; }
   .sci__heading { font-size: 2.4rem; }
   .sci__text { font-size: 1.6rem; }
   .sci__card-body { padding: 0.6rem 3.2rem 1.4rem; }
