@@ -1139,7 +1139,11 @@
         "address_zip_invalid_for_province": "הזן מיקוד / קוד דואר תקין עבור {{province}}",
         "address_zip_invalid_for_country_and_province": "הזן מיקוד / קוד דואר תקין עבור {{province}}, {{country}}",
         "address_zip_contains_emojis": "המיקוד אינו יכול להכיל אימוג'ים",
-        "address_zip_contains_mathematical_symbols": "המיקוד אינו יכול להכיל סמלים מתמטיים"
+        "address_zip_contains_mathematical_symbols": "המיקוד אינו יכול להכיל סמלים מתמטיים",
+        "email_blank": "הזן כתובת אימייל",
+        "phone_blank": "הזן מספר טלפון",
+        "address_country_invalid": "בחר מדינה/אזור מהרשימה",
+        "address_zip_invalid": "הזן מיקוד / קוד דואר תקין"
       }
     }
   }
