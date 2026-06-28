@@ -1294,6 +1294,9 @@
       },
       "customer_account": {
         "save_my_information_label": "שמור מידע זה לפעם הבאה."
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "תשלום מהיר"
       }
     }
   }
