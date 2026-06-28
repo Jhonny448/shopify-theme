@@ -1179,6 +1179,13 @@
         "action_required": "נדרשת פעולה",
         "modal_notice": "אנו יוצרים קשר עם {{paymentMethod}}",
         "remote_checkout_count": "{{current}} מתוך {{total}}"
+      },
+      "failed_payment": {
+        "page_title": "לא ניתן היה לעבד את התשלום",
+        "title": "לא ניתן היה לעבד את התשלום",
+        "payment_not_processed_title": "לא ניתן היה לעבד את התשלום שלך",
+        "payment_not_processed_text": "לא חויבת. חזור לעגלה שלך להשלמת הרכישה.",
+        "return_to_cart_button_label": "חזור לעגלה"
       }
     }
   }
