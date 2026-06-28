@@ -960,6 +960,45 @@
         "price_per_item": {
           "accessibility_label": "{{price}} לפריט",
           "label": "{{price}}/יח'"
+        },
+        "unit_price": {
+          "accessible_separator": "לכל",
+          "content_html": "{{price}} לכל {{per_unit}}",
+          "per_item": {
+            "single": "{{price}} ליחידה",
+            "one": "{{price}} לכל {{count}} פריט",
+            "other": "{{price}} לכל {{count}} פריטים"
+          },
+          "per_unit": {
+            "single": "{{price}}/{{unit}}",
+            "plural": "{{price}}/{{count}}{{unit}}"
+          }
+        },
+        "deferred_payment_info": {
+          "title": "תשלום של {{amount_due}} יגיע לפירעון ב-{{due_at}}",
+          "description_html": "לשאלות בנוגע להזמנתך, {{contact_us}}.",
+          "paid_today": "סך שולם היום",
+          "paid_today_next": "שולם היום",
+          "due_on_fulfillment_title": "תשלום של {{amount_due}} יגיע לפירעון עם מילוי ההזמנה",
+          "due_on_receipt_title": "תשלום של {{amount_due}} יגיע לפירעון עם קבלת ההזמנה"
+        },
+        "deferred_balance_info": {
+          "title": "יתרה של {{amount_due}} תגיע לפירעון ב-{{due_at}}",
+          "due_on_fulfillment_title": "יתרה של {{amount_due}} תגיע לפירעון עם מילוי ההזמנה"
+        },
+        "payment_terms_totals": {
+          "due_today": "סך לתשלום היום",
+          "due_today_next": "לתשלום היום",
+          "due_later": "סך לתשלום ב-{{due_at}}",
+          "due_on_fulfillment": "סך לתשלום עם מילוי ההזמנה",
+          "due_on_fulfillment_next": "לתשלום עם מילוי ההזמנה",
+          "due_on_receipt": "סך לתשלום עם קבלת ההזמנה",
+          "due_later_checkout_to_draft": "סך לתשלום בהמשך",
+          "total_paid": "סך שולם"
+        },
+        "expand_component_information": {
+          "one": "הצג פריט {{count}}",
+          "other": "הצג את כל {{count}} הפריטים"
         }
       }
     }
