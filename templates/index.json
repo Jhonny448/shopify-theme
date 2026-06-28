@@ -137,11 +137,408 @@
         "padding_top": 0,
         "padding_bottom": 36
       }
+    },
+    "np_trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "emoji": "🌿",
+            "text": "100% טבעי"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "emoji": "🚫",
+            "text": "ללא DEET וכימיקלים"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "emoji": "👶",
+            "text": "בטוח לילדים 0+"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "emoji": "🚚",
+            "text": "משלוח חינם"
+          }
+        },
+        "b5": {
+          "type": "item",
+          "settings": {
+            "emoji": "🛡️",
+            "text": "אחריות 365 יום"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1"
+      }
+    },
+    "np_concern": {
+      "type": "concern-cards",
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "emoji": "🦟",
+            "title": "הגנה מיתושים",
+            "badge": "חיסכון עד 59%",
+            "cta": "צפו בקולקציה"
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "emoji": "😴",
+            "title": "שינה רגועה",
+            "badge": "",
+            "cta": "צפו בקולקציה"
+          }
+        },
+        "b3": {
+          "type": "card",
+          "settings": {
+            "emoji": "🎯",
+            "title": "ריכוז וקשב",
+            "badge": "",
+            "cta": "צפו בקולקציה"
+          }
+        },
+        "b4": {
+          "type": "card",
+          "settings": {
+            "emoji": "🩹",
+            "title": "הקלה על גירודים",
+            "badge": "",
+            "cta": "צפו בקולקציה"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "eyebrow": "פתרון לכל צורך",
+        "title": "קנייה לפי צורך",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "np_science": {
+      "type": "science-spotlight",
+      "blocks": {
+        "b1": {
+          "type": "panel",
+          "settings": {
+            "image_position": "start",
+            "heading": "המדע שמאחורי המדבקות",
+            "text": "<p>שמנים אתריים טבעיים בשחרור איטי לאורך כל היום — הגנה עדינה ויעילה, בלי DEET ובלי כימיקלים.</p>"
+          }
+        },
+        "b2": {
+          "type": "panel",
+          "settings": {
+            "image_position": "end",
+            "heading": "טכנולוגיה ידידותית לסביבה",
+            "text": "<p>בד במבוק מתכלה שמשחרר את הריח באופן מבוקר — חדשני, בר-קיימא, ובטוח לעור הרגיש של הילדים.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ],
+      "settings": {
+        "eyebrow": "מאחורי הקלעים",
+        "title": "המדע שמאחורי המדבקות שלנו",
+        "button_label": "גלו את כל המוצרים",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "np_hiw": {
+      "type": "how-it-works",
+      "blocks": {
+        "b1": {
+          "type": "step",
+          "settings": {
+            "emoji": "🩹",
+            "title": "1. קלפו",
+            "text": "<p>הוציאו מדבקה מהאריזה — קל ונקי.</p>"
+          }
+        },
+        "b2": {
+          "type": "step",
+          "settings": {
+            "emoji": "👕",
+            "title": "2. הדביקו",
+            "text": "<p>הצמידו לבגד או לאביזר של הילד/ה.</p>"
+          }
+        },
+        "b3": {
+          "type": "step",
+          "settings": {
+            "emoji": "🛡️",
+            "title": "3. מוגנים",
+            "text": "<p>הגנה טבעית לאורך כל היום. פשוט ככה.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "eyebrow": "פשוט וקל",
+        "title": "איך זה עובד?",
+        "subtext": "שלושה צעדים פשוטים להגנה טבעית",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "np_reviews": {
+      "type": "reviews",
+      "blocks": {
+        "b1": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "title": "סוף סוף שינה רגועה",
+            "quote": "<p>הבן שלי בן 4 נרדם הרבה יותר מהר עם מדבקת השינה. ריח נעים והוא אפילו אוהב לבחור איזו מדבקה לשים.</p>",
+            "author": "מיכל ל.",
+            "verified": true
+          }
+        },
+        "b2": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "title": "נפרדנו מהיתושים",
+            "quote": "<p>טיילנו בצפון בלי עקיצה אחת. סוף סוף פתרון טבעי בלי ריסוס כימי על הילדים.</p>",
+            "author": "דנה כ.",
+            "verified": true
+          }
+        },
+        "b3": {
+          "type": "review",
+          "settings": {
+            "rating": "5",
+            "title": "עוזר עם הריכוז",
+            "quote": "<p>שמנו מדבקת ריכוז לפני שיעורי בית והייתה ירידה אמיתית בהתנגדות. שווה כל שקל.</p>",
+            "author": "יוסי ב.",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "eyebrow": "אלפי הורים מרוצים",
+        "title": "מה הורים מספרים עלינו",
+        "rating_value": "מצוין 4.9/5",
+        "reviews_count": "2,943 ביקורות",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "np_compare": {
+      "type": "comparison",
+      "blocks": {
+        "b1": {
+          "type": "row",
+          "settings": {
+            "feature": "100% טבעי, ללא DEET",
+            "us_value": "✓",
+            "them_value": "✗"
+          }
+        },
+        "b2": {
+          "type": "row",
+          "settings": {
+            "feature": "בטוח לילדים מגיל 0",
+            "us_value": "✓",
+            "them_value": "✗"
+          }
+        },
+        "b3": {
+          "type": "row",
+          "settings": {
+            "feature": "בלי ריסוס על העור",
+            "us_value": "✓",
+            "them_value": "✗"
+          }
+        },
+        "b4": {
+          "type": "row",
+          "settings": {
+            "feature": "ריח נעים",
+            "us_value": "✓",
+            "them_value": "✗"
+          }
+        },
+        "b5": {
+          "type": "row",
+          "settings": {
+            "feature": "אחריות 365 יום",
+            "us_value": "✓",
+            "them_value": "✗"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ],
+      "settings": {
+        "eyebrow": "ההבדל ברור",
+        "title": "למה לבחור בנו?",
+        "us_label": "המדבקות שלנו",
+        "them_label": "פתרונות אחרים",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "np_guarantee": {
+      "type": "guarantee",
+      "settings": {
+        "emoji": "🛡️",
+        "eyebrow": "קונים בראש שקט",
+        "heading": "אחריות 365 יום — החזר כספי מלא",
+        "text": "<p>אם לא אהבתם — נחזיר לכם את הכסף, בלי שאלות. פחות מ-0.5% מהלקוחות מבקשים החזר.</p>",
+        "button_label": "קנו עכשיו בראש שקט",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "np_press": {
+      "type": "press",
+      "blocks": {
+        "b1": {
+          "type": "logo",
+          "settings": {
+            "quote": "<p>“פתרון טבעי וגאוני להרחקת יתושים מהילדים.”</p>",
+            "name": "Mako"
+          }
+        },
+        "b2": {
+          "type": "logo",
+          "settings": {
+            "quote": "<p>“הריח מדהים והמדבקות פשוט עובדות.”</p>",
+            "name": "Ynet"
+          }
+        },
+        "b3": {
+          "type": "logo",
+          "settings": {
+            "quote": "<p>“ההורים מדברים על זה — וזה מוצדק.”</p>",
+            "name": "Walla"
+          }
+        },
+        "b4": {
+          "type": "logo",
+          "settings": {
+            "quote": "<p>“אלטרנטיבה טבעית בלי כימיקלים מיותרים.”</p>",
+            "name": "TheMarker"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "title": "כפי שפורסם ב…",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "np_ugc": {
+      "type": "ugc-gallery",
+      "blocks": {
+        "b1": {
+          "type": "image",
+          "settings": {}
+        },
+        "b2": {
+          "type": "image",
+          "settings": {}
+        },
+        "b3": {
+          "type": "image",
+          "settings": {}
+        },
+        "b4": {
+          "type": "image",
+          "settings": {}
+        },
+        "b5": {
+          "type": "image",
+          "settings": {}
+        },
+        "b6": {
+          "type": "image",
+          "settings": {}
+        },
+        "b7": {
+          "type": "image",
+          "settings": {}
+        },
+        "b8": {
+          "type": "image",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8"
+      ],
+      "settings": {
+        "eyebrow": "#המשפחה_שלנו",
+        "title": "משפחות אמיתיות, רגעים אמיתיים",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1"
+      }
     }
   },
   "order": [
     "image_with_text_7fRLtQ",
     "slideshow_hfFyh8",
-    "featured_collection"
+    "np_trust",
+    "np_concern",
+    "featured_collection",
+    "np_science",
+    "np_hiw",
+    "np_reviews",
+    "np_compare",
+    "np_guarantee",
+    "np_press",
+    "np_ugc"
   ]
 }
