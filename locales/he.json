@@ -999,7 +999,27 @@
         "expand_component_information": {
           "one": "הצג פריט {{count}}",
           "other": "הצג את כל {{count}} הפריטים"
+        },
+        "discount_discovery": {
+          "add_code": "הוסף הנחה"
         }
+      },
+      "shipping": {
+        "title": "משלוח",
+        "delivery_title": "משלוח",
+        "shipping_method_title": "שיטת משלוח",
+        "shipping_method_rollup_accessibility_label": "אפשרויות שיטת משלוח",
+        "shipping_method_one_time_purchase_group_title": "רכישה חד-פעמית",
+        "shipping_method_subscription_group_title": "מנוי",
+        "no_rates_for_cart_or_destination_notice": "אין שיטות משלוח זמינות עבור העגלה או הכתובת שלך",
+        "no_pickup_location_notice": "לפחות אחד מהמוצרים שלך אינו זמין לאיסוף עצמי",
+        "no_rates_for_country_notice": "לא נמצאו שיטות משלוח לכתובת זו.",
+        "no_rates_contact_notice": "צור איתנו קשר לקבלת מידע נוסף",
+        "free_rate_label": "חינם",
+        "cheapest_rate_label": "הזול ביותר",
+        "estimated_delivery_date_range": "{{minimum}} עד {{maximum}} ימי עסקים",
+        "delivery_date_range": "{{min_time}}–{{max_time}}",
+        "estimated_delivery_time": "משלוח משוער {{time}}"
       }
     }
   }
