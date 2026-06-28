@@ -1,0 +1,106 @@
+{{ 'natpat-kit.css' | asset_url | stylesheet_tag }}
+{{ 'concern-cards.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  #concern-{{ section.id }} { --cols: {{ section.settings.columns_desktop }}; }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div id="concern-{{ section.id }}" class="np-section concern color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {%- if section.settings.title != blank or section.settings.eyebrow != blank -%}
+      <div class="np-head">
+        {%- if section.settings.eyebrow != blank -%}<span class="np-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="np-head__title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtext != blank -%}<p class="np-head__subtext">{{ section.settings.subtext }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="concern__grid" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign has_link = false
+          if block.settings.link != blank
+            assign has_link = true
+          endif
+        -%}
+        <{% if has_link %}a href="{{ block.settings.link }}"{% else %}div{% endif %} class="np-card concern-card" role="listitem" {{ block.shopify_attributes }}>
+          <div class="concern-card__media">
+            {%- if block.settings.badge != blank -%}
+              <span class="np-badge np-badge--pop concern-card__badge">{{ block.settings.badge }}</span>
+            {%- endif -%}
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '200,300,400,600,800', class: 'concern-card__img', alt: block.settings.title | strip_html | escape }}
+            {%- else -%}
+              <div class="concern-card__placeholder" aria-hidden="true">{{ block.settings.emoji | default: '🧩' }}</div>
+            {%- endif -%}
+          </div>
+          <div class="concern-card__body">
+            <h3 class="concern-card__title">{{ block.settings.title }}</h3>
+            {%- if has_link -%}<span class="concern-card__cta">{{ block.settings.cta | default: 'צפו בקולקציה' }} →</span>{%- endif -%}
+          </div>
+        </{% if has_link %}a{% else %}div{% endif %}>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "קנייה לפי צורך (NatPat)",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "פתרון לכל צורך" },
+    { "type": "inline_richtext", "id": "title", "label": "Heading", "default": "קנייה לפי צורך" },
+    {
+      "type": "select", "id": "heading_size", "label": "Heading size",
+      "options": [ { "value": "h2", "label": "Medium" }, { "value": "h1", "label": "Large" } ],
+      "default": "h1"
+    },
+    { "type": "text", "id": "subtext", "label": "Subtext" },
+    { "type": "range", "id": "columns_desktop", "min": 2, "max": 5, "step": 1, "label": "Columns on desktop", "default": 4 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "כרטיס",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "emoji", "label": "Emoji (if no image)", "default": "🦟" },
+        { "type": "text", "id": "title", "label": "Title", "default": "הגנה מיתושים" },
+        { "type": "text", "id": "badge", "label": "Badge (e.g. discount)", "default": "חיסכון עד 59%" },
+        { "type": "text", "id": "cta", "label": "Link label", "default": "צפו בקולקציה" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "קנייה לפי צורך (NatPat)",
+      "blocks": [
+        { "type": "card", "settings": { "emoji": "🦟", "title": "הגנה מיתושים", "badge": "חיסכון עד 59%" } },
+        { "type": "card", "settings": { "emoji": "😴", "title": "שינה רגועה", "badge": "" } },
+        { "type": "card", "settings": { "emoji": "🎯", "title": "ריכוז וקשב", "badge": "" } },
+        { "type": "card", "settings": { "emoji": "🩹", "title": "הקלה על גירודים", "badge": "" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

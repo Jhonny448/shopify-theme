@@ -1,0 +1,117 @@
+{{ 'natpat-kit.css' | asset_url | stylesheet_tag }}
+{{ 'reviews.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  #reviews-{{ section.id }} { --cols: {{ section.settings.columns_desktop }}; }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div id="reviews-{{ section.id }}" class="np-section reviews color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {%- if section.settings.title != blank or section.settings.eyebrow != blank or section.settings.show_summary -%}
+      <div class="np-head">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="np-eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="np-head__title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.show_summary -%}
+          <div class="reviews__summary">
+            {%- render 'np-stars', rating: 5 -%}
+            <span class="reviews__summary-text">
+              <strong>{{ section.settings.rating_value }}</strong>
+              {%- if section.settings.reviews_count != blank %} · {{ section.settings.reviews_count }}{% endif -%}
+            </span>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.subtext != blank -%}
+          <p class="np-head__subtext">{{ section.settings.subtext }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="np-carousel np-carousel--snap reviews__grid" role="list">
+      {%- for block in section.blocks -%}
+        <article class="np-card reviews__card" role="listitem" {{ block.shopify_attributes }}>
+          {%- render 'np-stars', rating: block.settings.rating -%}
+          {%- if block.settings.title != blank -%}
+            <h3 class="reviews__card-title">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          <div class="reviews__quote rte">{{ block.settings.quote }}</div>
+          {%- if block.settings.author != blank -%}
+            <p class="reviews__author">
+              {{ block.settings.author }}
+              {%- if block.settings.verified %} <span class="reviews__verified">✓ קנייה מאומתת</span>{% endif -%}
+            </p>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ביקורות (NatPat)",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "אלפי הורים מרוצים" },
+    { "type": "inline_richtext", "id": "title", "label": "Heading", "default": "מה הורים מספרים עלינו" },
+    {
+      "type": "select", "id": "heading_size", "label": "Heading size",
+      "options": [ { "value": "h2", "label": "Medium" }, { "value": "h1", "label": "Large" }, { "value": "h0", "label": "Extra large" } ],
+      "default": "h1"
+    },
+    { "type": "text", "id": "subtext", "label": "Subtext" },
+    { "type": "header", "content": "Rating summary" },
+    { "type": "checkbox", "id": "show_summary", "label": "Show rating summary", "default": true },
+    { "type": "text", "id": "rating_value", "label": "Rating value", "default": "מצוין 4.9/5" },
+    { "type": "text", "id": "reviews_count", "label": "Reviews count", "default": "2,943 ביקורות" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "columns_desktop", "min": 2, "max": 4, "step": 1, "label": "Columns on desktop", "default": 3 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "ביקורת",
+      "settings": [
+        {
+          "type": "select", "id": "rating", "label": "Stars",
+          "options": [ {"value":"5","label":"5"},{"value":"4","label":"4"},{"value":"3","label":"3"},{"value":"2","label":"2"},{"value":"1","label":"1"} ],
+          "default": "5"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "מוצר מעולה!" },
+        { "type": "richtext", "id": "quote", "label": "Quote", "default": "<p>הבן שלי סוף סוף ישן רגוע בלילה. המדבקות עובדות וריח נעים. ממליצה בחום!</p>" },
+        { "type": "text", "id": "author", "label": "Author", "default": "מיכל ל." },
+        { "type": "checkbox", "id": "verified", "label": "Verified buyer badge", "default": true }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ביקורות (NatPat)",
+      "blocks": [
+        { "type": "review", "settings": { "rating": "5", "title": "סוף סוף שינה רגועה", "quote": "<p>הבן שלי בן 4 נרדם הרבה יותר מהר עם מדבקת השינה. ריח נעים והוא אפילו אוהב לבחור איזו מדבקה לשים.</p>", "author": "מיכל ל." } },
+        { "type": "review", "settings": { "rating": "5", "title": "נפרדנו מהיתושים", "quote": "<p>טיילנו בצפון בלי עקיצה אחת. סוף סוף פתרון טבעי בלי ריסוס כימי על הילדים.</p>", "author": "דנה כ." } },
+        { "type": "review", "settings": { "rating": "5", "title": "עוזר עם הריכוז", "quote": "<p>שמנו מדבקת ריכוז לפני שיעורי בית והייתה ירידה אמיתית בהתנגדות. שווה כל שקל.</p>", "author": "יוסי ב." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

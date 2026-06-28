@@ -1,0 +1,11 @@
+{%- liquid
+  assign np_rating = rating | default: 5
+  assign np_rating = np_rating | plus: 0
+-%}
+<span class="np-stars" role="img" aria-label="{{ np_rating }} / 5">
+  {%- for i in (1..5) -%}
+    <svg viewBox="0 0 20 20" fill="{% if i <= np_rating %}currentColor{% else %}none{% endif %}" stroke="currentColor" stroke-width="1.4" aria-hidden="true" focusable="false">
+      <path d="M10 1.6l2.55 5.17 5.7.83-4.13 4.02.98 5.68L10 14.9l-5.1 2.68.98-5.68L1.75 7.6l5.7-.83z"/>
+    </svg>
+  {%- endfor -%}
+</span>

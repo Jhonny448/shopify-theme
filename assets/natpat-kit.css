@@ -1,0 +1,123 @@
+/* ============================================================
+   NatPat Kit — shared design tokens & helpers for the custom
+   homepage sections (kid-friendly, lime-green, RTL-native).
+   Loaded by each np-* section. Edit --np-green to rebrand.
+   ============================================================ */
+
+.np-section {
+  /* Brand accent (NatPat lime) */
+  --np-green: #7ac143;
+  --np-green-dark: #59a02c;
+  --np-green-soft: #eef8e1;
+  --np-pop: #ff7a59;       /* warm coral accent */
+  --np-yellow: #ffd84d;    /* playful pop */
+  --np-ink: rgb(var(--color-foreground));
+
+  /* Shape & depth */
+  --np-radius: 1.6rem;
+  --np-radius-lg: 2.6rem;
+  --np-radius-pill: 999px;
+  --np-shadow: 0 1rem 3rem rgba(18, 18, 18, 0.08);
+  --np-shadow-sm: 0 0.4rem 1.2rem rgba(18, 18, 18, 0.06);
+
+  /* Carousels read direction so RTL scroll is correct */
+  direction: inherit;
+}
+
+/* ---- Section heading group ---- */
+.np-head {
+  text-align: center;
+  max-width: 64rem;
+  margin-inline: auto;
+  margin-block-end: 3.2rem;
+}
+
+.np-eyebrow {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  color: var(--np-green-dark);
+  background: var(--np-green-soft);
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--np-radius-pill);
+  margin-block-end: 1.2rem;
+}
+
+.np-head__title {
+  margin: 0 0 1rem;
+  line-height: 1.15;
+}
+
+.np-head__subtext {
+  margin: 0;
+  opacity: 0.78;
+  font-size: 1.6rem;
+}
+
+/* ---- Badge / pill ---- */
+.np-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--np-green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.3rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--np-radius-pill);
+  line-height: 1;
+  box-shadow: var(--np-shadow-sm);
+}
+
+.np-badge--pop { background: var(--np-pop); }
+.np-badge--yellow { background: var(--np-yellow); color: #3a2d00; }
+
+/* ---- Star rating ---- */
+.np-stars {
+  display: inline-flex;
+  gap: 0.2rem;
+  color: var(--np-green);
+  font-size: 1.6rem;
+  line-height: 1;
+  /* numbers/symbols stay LTR so 5 stars render consistently */
+  direction: ltr;
+}
+.np-stars svg { width: 1.7rem; height: 1.7rem; display: block; }
+
+/* ---- Generic rounded card ---- */
+.np-card {
+  background: rgb(var(--color-background));
+  border-radius: var(--np-radius);
+  box-shadow: var(--np-shadow);
+  overflow: hidden;
+}
+
+/* ---- Mobile scroll-snap carousel (RTL-safe, no JS) ---- */
+.np-carousel {
+  display: grid;
+  gap: 1.6rem;
+}
+
+@media screen and (max-width: 749px) {
+  .np-carousel--snap {
+    grid-auto-flow: column;
+    grid-auto-columns: 82%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-block-end: 0.5rem;
+    /* let cards peek past the page gutter */
+    margin-inline: -1.5rem;
+    padding-inline: 1.5rem;
+  }
+  .np-carousel--snap::-webkit-scrollbar { display: none; }
+  .np-carousel--snap > * { scroll-snap-align: center; }
+}
+
+/* ---- Reveal-on-scroll friendly (theme adds .scroll-trigger) ---- */
+.np-section .np-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+@media (hover: hover) {
+  .np-section a.np-card:hover { transform: translateY(-0.4rem); box-shadow: 0 1.6rem 3.6rem rgba(18,18,18,0.12); }
+}

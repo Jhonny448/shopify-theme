@@ -1,0 +1,73 @@
+{{ 'natpat-kit.css' | asset_url | stylesheet_tag }}
+{{ 'trust-bar.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="np-section trust-bar color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <ul class="trust-bar__list" role="list">
+      {%- for block in section.blocks -%}
+        <li class="trust-bar__item" {{ block.shopify_attributes }}>
+          <span class="trust-bar__icon" aria-hidden="true">
+            {%- if block.settings.icon != blank -%}
+              {{ block.settings.icon | image_url: width: 120 | image_tag: loading: 'lazy', widths: '60,120', alt: '' }}
+            {%- else -%}
+              <span class="trust-bar__emoji">{{ block.settings.emoji | default: '✓' }}</span>
+            {%- endif -%}
+          </span>
+          <span class="trust-bar__text">{{ block.settings.text }}</span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "סרגל יתרונות (NatPat)",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 24 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 24 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "יתרון",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon image (optional)" },
+        { "type": "text", "id": "emoji", "label": "Emoji (if no image)", "default": "🌿" },
+        { "type": "text", "id": "text", "label": "Text", "default": "100% טבעי" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "סרגל יתרונות (NatPat)",
+      "blocks": [
+        { "type": "item", "settings": { "emoji": "🌿", "text": "100% טבעי" } },
+        { "type": "item", "settings": { "emoji": "🚫", "text": "ללא DEET וכימיקלים" } },
+        { "type": "item", "settings": { "emoji": "👶", "text": "בטוח לילדים 0+" } },
+        { "type": "item", "settings": { "emoji": "🚚", "text": "משלוח חינם" } },
+        { "type": "item", "settings": { "emoji": "🛡️", "text": "אחריות 365 יום" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
