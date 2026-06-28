@@ -1144,6 +1144,41 @@
         "phone_blank": "הזן מספר טלפון",
         "address_country_invalid": "בחר מדינה/אזור מהרשימה",
         "address_zip_invalid": "הזן מיקוד / קוד דואר תקין"
+      },
+      "post_purchase": {
+        "page_title": "רכישה לאחר תשלום",
+        "title": "רכישה לאחר תשלום",
+        "escape_confirmation": "שילמת עבור הזמנתך.",
+        "escape_action": "צפה באישור ההזמנה ←",
+        "components": {
+          "close": "סגור",
+          "expand": "הצג עוד",
+          "processing": "מעבד...",
+          "submit": "שלח"
+        }
+      },
+      "processing": {
+        "redirecting_page_title": "מעביר...",
+        "redirecting_title": "מעביר...",
+        "redirecting_notice": "המתן בזמן שאנו מעבירים אותך.",
+        "complete_your_purchase_title": "השלם את הרכישה שלך",
+        "continue_to_payment_gateway_notice": "המשך לתשלום כדי להוסיף את פרטי התשלום שלך",
+        "continue_to_payment_gateway_button_label": "המשך לתשלום",
+        "complete_your_purchase_title_error": "תקן את פרטי התשלום שלך",
+        "continue_to_payment_gateway_notice_error": "לא ניתן היה לאמת את פרטי התשלום שלך.",
+        "continue_to_payment_gateway_button_label_error": "עדכן פרטי תשלום",
+        "page_title": "מעבד הזמנה",
+        "title": "מעבד הזמנה",
+        "your_order_has_been_received_title": "תודה על הזמנתך.",
+        "you_will_receive_confirmation": "אנו מקבלים הרבה הזמנות כרגע. תקבל אישור באימייל או בהודעה בקרוב. אם לא תקבל אותו תוך שעה, צור איתנו קשר.",
+        "you_will_not_be_charged": "לא תחויב עדיין",
+        "wait": {
+          "short": "ההזמנה שלך בעיבוד."
+        },
+        "remote_shops_payments_processing": "מעבד תשלומים",
+        "action_required": "נדרשת פעולה",
+        "modal_notice": "אנו יוצרים קשר עם {{paymentMethod}}",
+        "remote_checkout_count": "{{current}} מתוך {{total}}"
       }
     }
   }
