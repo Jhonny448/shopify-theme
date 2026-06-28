@@ -1293,7 +1293,8 @@
         "redirection_notice": "תועבר אל {{walletName}} להשלמת הרכישה שלך."
       },
       "customer_account": {
-        "save_my_information_label": "שמור מידע זה לפעם הבאה."
+        "save_my_information_label": "שמור מידע זה לפעם הבאה.",
+        "sign_in_link_label": "התחברות"
       },
       "alternative_payment_method_banner": {
         "express_checkout": "תשלום מהיר"
