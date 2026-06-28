@@ -1019,7 +1019,21 @@
         "cheapest_rate_label": "הזול ביותר",
         "estimated_delivery_date_range": "{{minimum}} עד {{maximum}} ימי עסקים",
         "delivery_date_range": "{{min_time}}–{{max_time}}",
-        "estimated_delivery_time": "משלוח משוער {{time}}"
+        "estimated_delivery_time": "משלוח משוער {{time}}",
+        "delivery": "משלוח {{time}}",
+        "delivery_to": "משלוח עד",
+        "arrives_time": "מגיע {{time}}",
+        "arrives_time_range": "מגיע {{min_time}}–{{max_time}}",
+        "estimated_time": "משוער {{time}}",
+        "estimated_time_range": "משוער {{min_time}}–{{max_time}}",
+        "default_description": "נשלח תוך יום עסקים אחד",
+        "unbranded_default_description": "מוכן למשלוח",
+        "unbranded_description_same_day": "נשלח באותו יום עסקים",
+        "shipping_line_phone_label": "מספר טלפון נייד (נדרש)",
+        "shipping_line_phone": "השליח שלך עשוי להשתמש במספר זה ליצירת קשר.",
+        "shipping_line_delivery_phone_label": "מספר טלפון נייד",
+        "shipping_line_delivery_phone": "ייתכן שייצרו איתך קשר עם עדכונים על המשלוח שלך.",
+        "optional_shipping_line_delivery_instructions_label": "הוראות משלוח (אופציונלי)"
       }
     }
   }
