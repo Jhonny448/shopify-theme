@@ -1,0 +1,124 @@
+{{ 'natpat-kit.css' | asset_url | stylesheet_tag }}
+{{ 'science-spotlight.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} {
+    --np-green: {{ section.settings.accent | default: '#2e44d4' }};
+    --np-green-dark: {{ section.settings.accent | default: '#2e44d4' | color_darken: 12 }};
+    --np-green-soft: {{ section.settings.accent | default: '#2e44d4' | color_lighten: 45 }};
+  }
+{%- endstyle -%}
+
+{%- capture wave_svg -%}
+<svg class="sci__wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0,40 L0,20 C100,2 200,38 300,20 C400,2 500,38 600,20 C700,2 800,38 900,20 C1000,2 1100,38 1200,20 L1200,40 Z"/></svg>
+{%- endcapture -%}
+
+<div class="np-section sci color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {%- if section.settings.title != blank or section.settings.eyebrow != blank -%}
+      <div class="np-head">
+        {%- if section.settings.eyebrow != blank -%}<span class="np-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="np-head__title sci__title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtext != blank -%}<p class="np-head__subtext">{{ section.settings.subtext }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="sci__panels">
+      {%- for block in section.blocks -%}
+        <div class="sci__panel sci__panel--media-{{ block.settings.image_position }}" {{ block.shopify_attributes }}>
+          <div class="sci__media">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '200,300,400,500,700', class: 'sci__img', alt: block.settings.heading | strip_html | escape }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'sci__img placeholder-svg' }}
+            {%- endif -%}
+          </div>
+          <div class="sci__card">
+            <span class="sci__wave-wrap sci__wave-wrap--top">{{ wave_svg }}</span>
+            <div class="sci__card-body">
+              {%- if block.settings.heading != blank -%}
+                <h3 class="sci__heading inline-richtext">{{ block.settings.heading }}</h3>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}<div class="sci__text rte">{{ block.settings.text }}</div>{%- endif -%}
+            </div>
+            <span class="sci__wave-wrap sci__wave-wrap--bottom">{{ wave_svg }}</span>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.button_label != blank -%}
+      <div class="sci__cta">
+        <a class="button sci__btn"{% if section.settings.button_link != blank %} href="{{ section.settings.button_link }}"{% endif %}>
+          {{- section.settings.button_label | escape -}}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "מדע ופיצ'רים (NatPat)",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "מאחורי הקלעים" },
+    { "type": "inline_richtext", "id": "title", "label": "Heading", "default": "המדע שמאחורי המדבקות שלנו" },
+    {
+      "type": "select", "id": "heading_size", "label": "Heading size",
+      "options": [ { "value": "h2", "label": "Medium" }, { "value": "h1", "label": "Large" }, { "value": "h0", "label": "Extra large" } ],
+      "default": "h1"
+    },
+    { "type": "text", "id": "subtext", "label": "Subtext" },
+    { "type": "header", "content": "Call to action" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "גלו את כל המוצרים" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "accent", "label": "Accent color", "default": "#2e44d4" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "panel",
+      "name": "פאנל",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Character / image" },
+        {
+          "type": "select", "id": "image_position", "label": "Image position (desktop)",
+          "options": [ { "value": "start", "label": "Start (right in RTL)" }, { "value": "end", "label": "End (left in RTL)" } ],
+          "default": "start"
+        },
+        { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "100% מרכיבים טבעיים" },
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>אנחנו משלבים שמנים אתריים טבעיים עם טכנולוגיית שחרור איטי, כדי להעניק לילדים שלכם הגנה עדינה — בלי כימיקלים מיותרים ובלי פשרות על בטיחות.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "מדע ופיצ'רים (NatPat)",
+      "blocks": [
+        { "type": "panel", "settings": { "image_position": "start", "heading": "המדע שמאחורי המדבקות", "text": "<p>שמנים אתריים טבעיים בשחרור איטי לאורך כל היום — הגנה עדינה ויעילה, בלי DEET ובלי כימיקלים.</p>" } },
+        { "type": "panel", "settings": { "image_position": "end", "heading": "טכנולוגיה ידידותית לסביבה", "text": "<p>בד במבוק מתכלה שמשחרר את הריח באופן מבוקר — חדשני, בר-קיימא, ובטוח למגע עם העור הרגיש של הילדים.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
