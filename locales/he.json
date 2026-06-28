@@ -1232,6 +1232,15 @@
           "text_html": "{{contact_us}} להוספת כתובתך",
           "contact_us": "צור איתנו קשר"
         }
+      },
+      "review": {
+        "title": "סקירה",
+        "review_title": "השלם את הזמנתך",
+        "review_and_confirm_title": "סקירה ואישור",
+        "checkout_as_guest": "בצע קופה כאורח",
+        "account_more_actions": "פעולות נוספות עבור חשבון זה",
+        "checkout_a_different_way": "בצע קופה בדרך אחרת",
+        "block_title": "סקור את הפרטים שלך"
       }
     }
   }
