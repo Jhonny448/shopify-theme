@@ -741,7 +741,45 @@
         "optional_last_name_label": "שם משפחה"
       },
       "delivery_options": {
-        "none_method_definition": "אין משלוח"
+        "none_method_definition": "אין משלוח",
+        "free_total_label": "חינם",
+        "ship": "משלוח",
+        "ship_to_address": "משלוח לכתובת",
+        "shipping_address": "כתובת למשלוח",
+        "pick_up": "איסוף עצמי",
+        "pick_up_from_store": "איסוף מהחנות",
+        "pick_up_locations": "נקודות איסוף"
+      },
+      "remote_merchandise_only": {
+        "detail_item_label": {
+          "one": "פריט {{count}}",
+          "other": "פריטים {{count}}"
+        }
+      },
+      "stock": {
+        "page_title": "בעיות מלאי",
+        "title": "אזל מהמלאי",
+        "items_unavailable_notice": "חלק מהפריטים אינם זמינים יותר.",
+        "product_column_header": "מוצרים",
+        "quantity_column_header": "כמות",
+        "price_column_header": "מחיר",
+        "status_column_header": "סטטוס",
+        "removed_from_cart_notice": "הוסר מהעגלה",
+        "sold_out_label": "אזל מהמלאי",
+        "reduced_label": "כמות מופחתת",
+        "reduced_with_quantity_label": "נותרו {{quantity_available}} בלבד",
+        "remove_from_cart_button_label": "הסר מהעגלה",
+        "continue_shopping_button_label": "המשך בקניות",
+        "go_back_to_cart_button_label": "חזור לעגלה שלי",
+        "remove": "הסר",
+        "return_to_store_label": "חזור לחנות",
+        "continue_cta_label": "המשך לתשלום",
+        "item_label": {
+          "one": "פריט {{count}}",
+          "other": "פריטים {{count}}"
+        },
+        "empty_cart_label": "העגלה שלך ריקה",
+        "out_of_stock_in_context_label": "מוצר זה אינו זמין במדינה/אזור שלך."
       }
     }
   }
