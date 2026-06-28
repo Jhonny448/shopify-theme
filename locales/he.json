@@ -1291,6 +1291,9 @@
       },
       "wallets": {
         "redirection_notice": "תועבר אל {{walletName}} להשלמת הרכישה שלך."
+      },
+      "customer_account": {
+        "save_my_information_label": "שמור מידע זה לפעם הבאה."
       }
     }
   }
