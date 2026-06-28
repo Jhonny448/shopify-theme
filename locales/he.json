@@ -739,6 +739,9 @@
         "optional_postcode_label": "מיקוד",
         "postcode_placeholder": "מיקוד",
         "optional_last_name_label": "שם משפחה"
+      },
+      "delivery_options": {
+        "none_method_definition": "אין משלוח"
       }
     }
   }
