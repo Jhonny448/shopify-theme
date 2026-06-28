@@ -1299,6 +1299,9 @@
       "alternative_payment_method_banner": {
         "express_checkout": "תשלום מהיר"
       }
+    },
+    "links": {
+      "powered_by_shopify": "-"
     }
   }
 }
