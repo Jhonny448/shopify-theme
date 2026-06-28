@@ -1225,7 +1225,8 @@
         "thank_you_confirmed_order_with_phone": "תקבל הודעת אישור עם מספר ההזמנה שלך בקרוב.",
         "thank_you_confirmed_order_with_email_and_phone": "תקבל אימייל אישור עם מספר ההזמנה שלך בקרוב.",
         "thank_you_confirmed_orders_with_email": "תקבל אימיילי אישור נפרדים עם מספרי ההזמנות שלך בקרוב.",
-        "thank_you_confirmed_orders_with_phone": "תקבל הודעות אישור נפרדות עם מספרי ההזמנות שלך בקרוב."
+        "thank_you_confirmed_orders_with_phone": "תקבל הודעות אישור נפרדות עם מספרי ההזמנות שלך בקרוב.",
+        "track_your_order_link_text": "עקוב אחר ההזמנה"
       }
     }
   }
