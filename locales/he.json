@@ -339,7 +339,7 @@
       "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "כולל מכסים ומסים. הנחות ו<a href=\"{{ link }}\">משלוח</a> מחושבים בקופה.",
       "duties_and_taxes_included_shipping_at_checkout_without_policy": "כולל מכסים ומסים. הנחות ומשלוח מחושבים בקופה.",
       "taxes_included_shipping_at_checkout_with_policy_html": "כולל מסים. הנחות ו<a href=\"{{ link }}\">משלוח</a> מחושבים בקופה.",
-      "taxes_included_shipping_at_checkout_without_policy": "כולל מסים. הנחות ומשלוח מחושבים בקופה.",
+      "taxes_included_shipping_at_checkout_without_policy": "",
       "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "כולל מכסים. מסים, הנחות ו<a href=\"{{ link }}\">משלוח</a> מחושבים בקופה.",
       "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "כולל מכסים. מסים, הנחות ומשלוח מחושבים בקופה.",
       "taxes_at_checkout_shipping_at_checkout_with_policy_html": "מסים, הנחות ו<a href=\"{{ link }}\">משלוח</a> מחושבים בקופה.",
