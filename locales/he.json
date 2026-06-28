@@ -1065,7 +1065,8 @@
         "offsite_gateway_redirect_hint_no_button_label": "תועבר אל {{gateway_label}} להשלמת הרכישה.",
         "receiver_payment_experience_hint": "לאחר ביצוע ההזמנה שלך, תקבל פרטי תשלום. בצע את התשלום ב-Multibanco או באינטרנט תוך {{due_days}} ימים.",
         "billing_address_title": "כתובת לחיוב",
-        "billing_address_rollup_accessibility_label": "אפשרויות כתובת לחיוב"
+        "billing_address_rollup_accessibility_label": "אפשרויות כתובת לחיוב",
+        "markets_pro_disclaimer_privacy_policy": "מדיניות פרטיות"
       }
     }
   }
