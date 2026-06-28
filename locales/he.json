@@ -944,7 +944,23 @@
         "component_quantity_title": "{{quantity}} × {{product_title}}",
         "alternative_payment_currency_total": "יחויב כ-{{amount_due}}",
         "pay_merchant_label": "שלם ל-{{merchant_name}}",
-        "discount_applies_to_subscription_items_only": "הנחה זו חלה על פריטי מנוי בלבד"
+        "discount_applies_to_subscription_items_only": "הנחה זו חלה על פריטי מנוי בלבד",
+        "discount_order_stacking": {
+          "one": "הנחת הזמנה",
+          "other": "הנחות הזמנה"
+        },
+        "subtotal_label_with_quantity": {
+          "one": "סכום ביניים - פריט {{count}}",
+          "other": "סכום ביניים - פריטים {{count}}"
+        },
+        "pickup_unavailable_banner_body": {
+          "ship_to_address": "משלוח לכתובת",
+          "ship_to_address_instead_html": "במקום {{link}}"
+        },
+        "price_per_item": {
+          "accessibility_label": "{{price}} לפריט",
+          "label": "{{price}}/יח'"
+        }
       }
     }
   }
