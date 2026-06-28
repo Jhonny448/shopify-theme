@@ -1240,7 +1240,17 @@
         "checkout_as_guest": "בצע קופה כאורח",
         "account_more_actions": "פעולות נוספות עבור חשבון זה",
         "checkout_a_different_way": "בצע קופה בדרך אחרת",
-        "block_title": "סקור את הפרטים שלך"
+        "block_title": "סקור את הפרטים שלך",
+        "blocks": {
+          "contact_method_title": "יצירת קשר",
+          "billing_address_title": "כתובת לחיוב",
+          "shipping_address_title": "כתובת למשלוח",
+          "shipping_method_title": "שיטת משלוח",
+          "payment_method_title": "שיטת תשלום",
+          "change_link_label": "שנה",
+          "change_contact_method_link_label": "שנה פרטי יצירת קשר",
+          "change_billing_address_link_label": "שנה כתובת לחיוב"
+        }
       }
     }
   }
