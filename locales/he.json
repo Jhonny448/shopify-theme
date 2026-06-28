@@ -1066,7 +1066,23 @@
         "receiver_payment_experience_hint": "לאחר ביצוע ההזמנה שלך, תקבל פרטי תשלום. בצע את התשלום ב-Multibanco או באינטרנט תוך {{due_days}} ימים.",
         "billing_address_title": "כתובת לחיוב",
         "billing_address_rollup_accessibility_label": "אפשרויות כתובת לחיוב",
-        "markets_pro_disclaimer_privacy_policy": "מדיניות פרטיות"
+        "markets_pro_disclaimer_privacy_policy": "מדיניות פרטיות",
+        "discount_codes_removed_summary": {
+          "one": "קוד הנחה {{count}} הוסר",
+          "other": "{{count}} קודי הנחה הוסרו"
+        },
+        "discount_codes_modified_summary": {
+          "one": "קוד הנחה {{count}} שונה",
+          "other": "{{count}} קודי הנחה שונו"
+        },
+        "discount_codes_removed_or_modified_summary": {
+          "one": "קוד הנחה {{count}} הוסר או שונה",
+          "other": "{{count}} קודי הנחה הוסרו או שונו"
+        },
+        "discount_show_more_warnings": {
+          "one": "הצג {{count}} נוסף",
+          "other": "הצג {{count}} נוספים"
+        }
       }
     }
   }
