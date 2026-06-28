@@ -1207,7 +1207,25 @@
         "shipping_address_map_title": "מפת גוגל המציגה את כתובת המשלוח: {{address}}",
         "payment_method_title": "שיטת תשלום",
         "payment_method_not_charged": "לא חויב",
-        "shipping_method_title": "שיטת משלוח"
+        "shipping_method_title": "שיטת משלוח",
+        "tracking_number": "מספר מעקב:",
+        "company_tracking_number": "מספר מעקב {{company}}",
+        "estimated_arrival": "תאריך משלוח משוער",
+        "estimated_delivery": "הערכת משלוח נוכחית",
+        "re-order": "הזמן שוב את אותם פריטים",
+        "confirmed": "מאושר",
+        "confirmed_items_count": "{{confirmed_count}} מתוך {{total_count}} פריטים מאושרים",
+        "thank_you_title": "ההזמנה שלך מאושרת",
+        "thank_you_title_payment": "התשלום שלך מאושר",
+        "thank_you_title_review": "ההזמנה שלך הוגשה לבדיקה",
+        "thank_you_title_payments_app_pending_default": "התשלום שלך בעיבוד",
+        "thank_you_title_payments_app_pending_buyer_action_required": "ההזמנה שלך התקבלה",
+        "thank_you_title_payments_app_failed_pending_payment": "לא ניתן היה לעבד את התשלום שלך",
+        "thank_you_confirmed_order_with_email": "תקבל אימייל אישור עם מספר ההזמנה שלך בקרוב.",
+        "thank_you_confirmed_order_with_phone": "תקבל הודעת אישור עם מספר ההזמנה שלך בקרוב.",
+        "thank_you_confirmed_order_with_email_and_phone": "תקבל אימייל אישור עם מספר ההזמנה שלך בקרוב.",
+        "thank_you_confirmed_orders_with_email": "תקבל אימיילי אישור נפרדים עם מספרי ההזמנות שלך בקרוב.",
+        "thank_you_confirmed_orders_with_phone": "תקבל הודעות אישור נפרדות עם מספרי ההזמנות שלך בקרוב."
       }
     }
   }
