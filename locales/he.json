@@ -1288,6 +1288,9 @@
         "legal_notice": "הודעה משפטית",
         "shipping_policy": "מדיניות משלוח",
         "terms_of_sale": "תנאי מכירה"
+      },
+      "wallets": {
+        "redirection_notice": "תועבר אל {{walletName}} להשלמת הרכישה שלך."
       }
     }
   }
