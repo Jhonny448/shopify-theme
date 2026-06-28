@@ -1250,6 +1250,30 @@
           "change_link_label": "שנה",
           "change_contact_method_link_label": "שנה פרטי יצירת קשר",
           "change_billing_address_link_label": "שנה כתובת לחיוב"
+        },
+        "item_header": {
+          "change_value": "שנה ערך",
+          "section": "קטגוריה",
+          "value": "ערך"
+        }
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "שלחו לי חדשות והצעות באימייל",
+        "post_accept_marketing_checkbox_label": "אתה רשום לקבלת חדשות והצעות באימייל",
+        "pending_accept_marketing_checkbox_label": "בדוק את האימייל שלך לאישור המנוי לחדשות והצעות",
+        "accept_sms_checkbox_label": "שלחו לי חדשות והצעות בהודעת טקסט",
+        "disclaimer": {
+          "privacy_policy": "מדיניות פרטיות",
+          "terms_of_service": "תנאי שימוש"
+        },
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "מדיניות פרטיות",
+            "terms_of_service": "תנאי שימוש",
+            "description_html": "בהרשמה באמצעות הודעת טקסט, אתה מסכים לקבל הודעות שיווקיות אוטומטיות חוזרות, כולל תזכורות עגלה, למספר הטלפון שסופק.",
+            "description_transactional_html": "ייתכן שתקבל הודעות טקסט הקשורות לאישור הזמנה ועדכוני משלוח. השב ״הסר״ להסרה. השב ״עזרה״ לעזרה. תעריפי הודעות ונתונים עשויים לחול."
+          },
+          "mobile_phone_number": "מספר טלפון נייד"
         }
       }
     }
