@@ -1082,7 +1082,8 @@
         "discount_show_more_warnings": {
           "one": "הצג {{count}} נוסף",
           "other": "הצג {{count}} נוספים"
-        }
+        },
+        "title": "תשלום"
       },
       "billing": {
         "billing_address_title": "חיוב אל",
