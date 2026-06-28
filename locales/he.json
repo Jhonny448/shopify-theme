@@ -1083,6 +1083,42 @@
           "one": "הצג {{count}} נוסף",
           "other": "הצג {{count}} נוספים"
         }
+      },
+      "billing": {
+        "billing_address_title": "חיוב אל",
+        "billing_address_rollup_accessibility_label": "אפשרויות חיוב אל",
+        "same_as_shipping": "זהה לכתובת המשלוח",
+        "add_address": "השתמש בכתובת אחרת",
+        "edit": "ערוך",
+        "delete": "מחק",
+        "address_more": "פעולות נוספות עבור כתובת זו",
+        "address_edit": "ערוך כתובת",
+        "address_delete": "מחק כתובת",
+        "address_confirm": "האם אתה בטוח שברצונך למחוק כתובת זו מחשבונך?"
+      },
+      "field_errors": {
+        "handle_phone_invalid": "הזן מספר טלפון תקין",
+        "handle_email_invalid": "הזן כתובת אימייל תקינה",
+        "email_invalid": "הזן כתובת אימייל תקינה",
+        "email_or_phone_blank": "הזן כתובת אימייל או מספר טלפון",
+        "email_or_phone_invalid": "הזן כתובת אימייל תקינה או מספר טלפון נייד",
+        "address_first_name_blank": "הזן שם פרטי",
+        "address_first_name_too_long": "השם הפרטי ארוך מדי (מקסימום 255 תווים)",
+        "address_first_name_contains_emojis": "השם הפרטי אינו יכול להכיל אימוג'ים",
+        "address_first_name_contains_html_tags": "השם הפרטי אינו יכול להכיל תגיות HTML",
+        "address_first_name_contains_url": "השם הפרטי אינו יכול להכיל כתובת URL",
+        "address_first_name_contains_mathematical_symbols": "השם הפרטי אינו יכול להכיל סמלים מתמטיים",
+        "address_last_name_blank": "הזן שם משפחה",
+        "address_last_name_too_long": "שם המשפחה ארוך מדי (מקסימום 255 תווים)",
+        "address_last_name_contains_emojis": "שם המשפחה אינו יכול להכיל אימוג'ים",
+        "address_last_name_contains_html_tags": "שם המשפחה אינו יכול להכיל תגיות HTML",
+        "address_last_name_contains_url": "שם המשפחה אינו יכול להכיל כתובת URL",
+        "address_last_name_contains_mathematical_symbols": "שם המשפחה אינו יכול להכיל סמלים מתמטיים",
+        "address_address1_blank": "הזן כתובת",
+        "address_address1_too_long": "שורת הכתובת הראשונה ארוכה מדי (מקסימום 255 תווים)",
+        "address_address1_contains_emojis": "שורת הכתובת הראשונה אינה יכולה להכיל אימוג'ים",
+        "address_address1_contains_html_tags": "שורת הכתובת הראשונה אינה יכולה להכיל תגיות HTML",
+        "address_address1_contains_mathematical_symbols": "שורת הכתובת הראשונה אינה יכולה להכיל סמלים מתמטיים"
       }
     }
   }
