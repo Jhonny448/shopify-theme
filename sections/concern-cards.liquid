@@ -46,7 +46,8 @@
               <span class="np-badge np-badge--pop concern-card__badge">{{ block.settings.badge }}</span>
             {%- endif -%}
             {%- if block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '200,300,400,600,800', class: 'concern-card__img', alt: block.settings.title | strip_html | escape }}
+              {%- assign cc_alt = block.settings.title | strip_html | escape -%}
+              {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '200,300,400,600,800', class: 'concern-card__img', alt: cc_alt }}
             {%- else -%}
               <div class="concern-card__placeholder" aria-hidden="true">{{ block.settings.emoji | default: '🧩' }}</div>
             {%- endif -%}

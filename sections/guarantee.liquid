@@ -24,7 +24,8 @@
     <div class="guarantee__panel color-{{ section.settings.color_scheme }} gradient{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       {%- if section.settings.image != blank -%}
         <div class="guarantee__media">
-          {{ section.settings.image | image_url: width: 480 | image_tag: loading: 'lazy', widths: '160,240,360,480', class: 'guarantee__img', alt: section.settings.heading | strip_html | escape }}
+          {%- assign g_alt = section.settings.heading | strip_html | escape -%}
+          {{ section.settings.image | image_url: width: 480 | image_tag: loading: 'lazy', widths: '160,240,360,480', class: 'guarantee__img', alt: g_alt }}
         </div>
       {%- else -%}
         <div class="guarantee__media guarantee__media--emoji" aria-hidden="true">{{ section.settings.emoji | default: '🛡️' }}</div>

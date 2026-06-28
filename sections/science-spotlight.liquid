@@ -40,7 +40,8 @@
         <div class="sci__panel sci__panel--media-{{ block.settings.image_position }}" {{ block.shopify_attributes }}>
           <div class="sci__media">
             {%- if block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '200,300,400,500,700', class: 'sci__img', alt: block.settings.heading | strip_html | escape }}
+              {%- assign sci_alt = block.settings.heading | strip_html | escape -%}
+              {{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '200,300,400,500,700', class: 'sci__img', alt: sci_alt }}
             {%- else -%}
               {{ 'image' | placeholder_svg_tag: 'sci__img placeholder-svg' }}
             {%- endif -%}
