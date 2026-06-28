@@ -273,6 +273,8 @@
         "title": "המדע שמאחורי המדבקות שלנו",
         "heading_size": "h1",
         "subtext": "",
+        "image_size": "large",
+        "image_width": 40,
         "button_label": "",
         "button_link": "",
         "accent": "#2e44d4",
