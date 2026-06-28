@@ -39,10 +39,17 @@
 /* ---- Image ---- */
 .sci__media {
   display: flex;
-  justify-content: var(--sci-img-justify, center);
+  justify-content: center;
   align-items: center;
   min-width: 0;
 }
+/* Auto = hug the OUTER edge so there is no gap on the screen side */
+.sci__panel--media-start .sci__media[data-align="auto"] { justify-content: flex-start; }
+.sci__panel--media-end .sci__media[data-align="auto"] { justify-content: flex-end; }
+/* Manual overrides */
+.sci__media[data-align="center"] { justify-content: center; }
+.sci__media[data-align="start"] { justify-content: flex-start; }
+.sci__media[data-align="end"] { justify-content: flex-end; }
 .sci__img {
   display: block;
   width: 100%;

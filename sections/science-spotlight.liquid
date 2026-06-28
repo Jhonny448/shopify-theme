@@ -59,7 +59,7 @@
     <div class="sci__panels">
       {%- for block in section.blocks -%}
         <div class="sci__panel sci__panel--media-{{ block.settings.image_position }}{% unless section.settings.show_card_waves %} sci__panel--flat{% endunless %}" {{ block.shopify_attributes }}>
-          <div class="sci__media" data-fit="{{ section.settings.image_fit }}">
+          <div class="sci__media" data-fit="{{ section.settings.image_fit }}" data-align="{{ section.settings.image_align }}">
             {%- if block.settings.image != blank -%}
               {%- assign sci_alt = block.settings.heading | strip_html | escape -%}
               {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '200,300,400,500,700,800', class: 'sci__img', alt: sci_alt }}
@@ -131,8 +131,13 @@
     },
     {
       "type": "select", "id": "image_align", "label": "Image alignment",
-      "options": [ { "value": "center", "label": "Center" }, { "value": "flex-start", "label": "Start side" }, { "value": "flex-end", "label": "End side" } ],
-      "default": "center"
+      "options": [
+        { "value": "auto", "label": "Auto (hug outer edge, no gap)" },
+        { "value": "center", "label": "Center" },
+        { "value": "start", "label": "Stick right" },
+        { "value": "end", "label": "Stick left" }
+      ],
+      "default": "auto"
     },
     { "type": "range", "id": "panel_gap", "min": 0, "max": 64, "step": 2, "unit": "px", "label": "Gap between image and text", "default": 16 },
 
