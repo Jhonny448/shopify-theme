@@ -1275,6 +1275,17 @@
           },
           "mobile_phone_number": "מספר טלפון נייד"
         }
+      },
+      "shop_policies": {
+        "policy_label": "מדיניות",
+        "policies_label": "מדיניויות",
+        "select_policy_label": "בחר מדיניות",
+        "refund_policy": "מדיניות החזרות",
+        "privacy_policy": "מדיניות פרטיות",
+        "terms_of_service": "תנאי שימוש",
+        "legal_notice": "הודעה משפטית",
+        "shipping_policy": "מדיניות משלוח",
+        "terms_of_sale": "תנאי מכירה"
       }
     }
   }
