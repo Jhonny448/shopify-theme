@@ -1118,7 +1118,28 @@
         "address_address1_too_long": "שורת הכתובת הראשונה ארוכה מדי (מקסימום 255 תווים)",
         "address_address1_contains_emojis": "שורת הכתובת הראשונה אינה יכולה להכיל אימוג'ים",
         "address_address1_contains_html_tags": "שורת הכתובת הראשונה אינה יכולה להכיל תגיות HTML",
-        "address_address1_contains_mathematical_symbols": "שורת הכתובת הראשונה אינה יכולה להכיל סמלים מתמטיים"
+        "address_address1_contains_mathematical_symbols": "שורת הכתובת הראשונה אינה יכולה להכיל סמלים מתמטיים",
+        "address_city_blank": "הזן עיר",
+        "address_city_too_long": "שם העיר ארוך מדי (מקסימום 255 תווים)",
+        "address_city_contains_emojis": "שם העיר אינו יכול להכיל אימוג'ים",
+        "address_city_contains_html_tags": "שם העיר אינו יכול להכיל תגיות HTML",
+        "address_city_contains_mathematical_symbols": "שם העיר אינו יכול להכיל סמלים מתמטיים",
+        "address_country_blank": "בחר מדינה/אזור",
+        "address_country_not_supported": "אנחנו לא שולחים למדינה או לאזור זה. הזן כתובת משלוח חדשה ונסה שוב.",
+        "address_province_blank": "בחר מדינה/מחוז",
+        "address_province_invalid": "בחר מדינה/מחוז תקינים",
+        "address_phone_blank": "הזן מספר טלפון תקין",
+        "address_phone_contains_emojis": "מספר הטלפון אינו יכול להכיל אימוג'ים",
+        "address_phone_invalid": "הזן מספר טלפון תקין",
+        "address_zip_blank": "הזן מיקוד / קוד דואר",
+        "address_zip_blocked_address": "מיקום זה אינו נתמך",
+        "address_zip_too_long": "המיקוד ארוך מדי (מקסימום 255 תווים)",
+        "address_zip_not_supported": "מיקום זה אינו נתמך",
+        "address_zip_invalid_for_country": "הזן מיקוד / קוד דואר תקין עבור {{country}}",
+        "address_zip_invalid_for_province": "הזן מיקוד / קוד דואר תקין עבור {{province}}",
+        "address_zip_invalid_for_country_and_province": "הזן מיקוד / קוד דואר תקין עבור {{province}}, {{country}}",
+        "address_zip_contains_emojis": "המיקוד אינו יכול להכיל אימוג'ים",
+        "address_zip_contains_mathematical_symbols": "המיקוד אינו יכול להכיל סמלים מתמטיים"
       }
     }
   }
