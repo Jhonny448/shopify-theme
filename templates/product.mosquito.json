@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -10,13 +19,6 @@
         "price": {
           "type": "price",
           "settings": {}
-        },
-        "hook": {
-          "type": "text",
-          "settings": {
-            "text": "מדביקים על הבגד — לא על העור. מרחיק יתושים עד 8 שעות, מתאים מגיל 0.",
-            "text_style": "subtitle"
-          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -36,91 +38,18 @@
             "show_gift_card_recipient": true
           }
         },
-        "icon_row": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div class=\"np-quickicons\" style=\"display:flex;flex-wrap:wrap;gap:1rem 1.6rem;margin:1.4rem 0;font-weight:600;font-size:1.4rem;\"><span style=\"display:inline-flex;align-items:center;gap:.5rem;\">🚫 לא על העור</span><span style=\"display:inline-flex;align-items:center;gap:.5rem;\">👶 מגיל 0</span><span style=\"display:inline-flex;align-items:center;gap:.5rem;\">⏱️ עד 8 שעות</span></div>"
-          }
-        },
-        "faq1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "איך זה מגן בלי לשים כלום על העור?",
-            "icon": "leaf",
-            "content": "<p>הציטרונלה שעל הבגד יוצרת בועת ריח סביב הילד. יתושים מנווטים לפי ריח — והבועה פשוט מסתירה אותו מהם. ההגנה על החולצה, לא על העור.</p>"
-          }
-        },
-        "faq2": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "האם זה באמת עובד?",
-            "icon": "check_mark",
-            "content": "<p>כן. כל מדבקה אפקטיבית עד 8 שעות, ואלפי הורים כבר עברו לשיטה הזו. במחקר Poseidon Sciences נמדדה הגנה טובה יותר ממוצרים דומים.</p>"
-          }
-        },
-        "faq3": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "בטוח לתינוקות? מאיזה גיל?",
-            "icon": "heart",
-            "content": "<p>מתאים מגיל 0. המדבקה על הבגד — לא על העור — כך שאין ספיגה, אין מגע ואין שאיפה ישירה. ציטרונלה טבעית בלבד וסרט דבק בדרגה רפואית.</p>"
-          }
-        },
-        "faq4": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "כמה מדבקות לשים וכמה זמן זה מחזיק?",
-            "icon": "stopwatch",
-            "content": "<p>גיל 0–2: מדבקה אחת על הגב · 3–5: 2 מדבקות · 6+: עד 4. כל מדבקה מחזיקה עד 8 שעות — מחליפים ומוגנים כל היום.</p>"
-          }
-        },
-        "tab_ingredients": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "מרכיבים",
-            "icon": "leaf",
-            "content": "<p>ציטרונלה טבעית בלבד — שמן צמחי אתרי. סרט דבק בדרגה רפואית. ללא DEET, ללא כימיקלים. מתאים מגיל 0.</p>"
-          }
-        },
-        "tab_usage": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "אופן שימוש",
-            "icon": "clipboard",
-            "content": "<p>מדביקים על הבגד (חולצה/צווארון) — לא על העור. גיל 0–2: מדבקה אחת. גיל 3–5: 2 מדבקות. גיל 6+: עד 4. מחליפים כל 8 שעות.</p>"
-          }
-        },
-        "tab_shipping": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "משלוח והחזרות",
-            "icon": "truck",
-            "content": "<p>משלוח מהיר עד הבית. אחריות 365 יום — לא אהבתם, נחזיר לכם את הכסף.</p>"
-          }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "שיתוף"
-          }
+        "description": {
+          "type": "description",
+          "settings": {}
         }
       },
       "block_order": [
         "title",
         "price",
-        "hook",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "icon_row",
-        "faq1",
-        "faq2",
-        "faq3",
-        "faq4",
-        "tab_ingredients",
-        "tab_usage",
-        "tab_shipping",
-        "share"
+        "description"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -128,7 +57,7 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_slider",
         "mobile_thumbnails": "hide",
         "media_position": "left",
         "image_zoom": "lightbox",
@@ -138,500 +67,21 @@
         "padding_bottom": 0
       }
     },
-    "trust-bar": {
-      "type": "trust-bar",
-      "blocks": {
-        "i_1": {
-          "type": "item",
-          "settings": {
-            "emoji": "🌿",
-            "text": "100% טבעי"
-          }
-        },
-        "i_2": {
-          "type": "item",
-          "settings": {
-            "emoji": "🚫",
-            "text": "ללא DEET"
-          }
-        },
-        "i_3": {
-          "type": "item",
-          "settings": {
-            "emoji": "👶",
-            "text": "בטוח מגיל 0"
-          }
-        },
-        "i_4": {
-          "type": "item",
-          "settings": {
-            "emoji": "⏱️",
-            "text": "עד 8 שעות"
-          }
-        },
-        "i_5": {
-          "type": "item",
-          "settings": {
-            "emoji": "🧴",
-            "text": "ציטרונלה טבעית"
-          }
-        }
-      },
-      "block_order": [
-        "i_1",
-        "i_2",
-        "i_3",
-        "i_4",
-        "i_5"
-      ],
+    "disclosures": {
+      "type": "disclosures",
       "settings": {
-        "color_scheme": "scheme-1",
-        "padding_top": 24,
-        "padding_bottom": 24
-      }
-    },
-    "product-story": {
-      "type": "product-story",
-      "blocks": {
-        "p_1": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>כן, זה נשמע קצת מוזר — כי זה נוגד את מה שאנחנו מכירים. אבל רוב ההורים לא יודעים שיש פתרון שעובד בלי למרוח או לרסס כלום על העור של הילד.</p>"
-          }
-        },
-        "p_2": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>אומרים שהתרסיסים בטוחים. אולי זה נכון. אבל כשמדובר בילד שלך — למה בכלל לקחת סיכון, אם יש פתרון שעובד בלי לשים שום דבר על העור שלו?</p>"
-          }
-        },
-        "p_3": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>כל קיץ אותו סיפור. יתושים, עקיצות, ילד שמגרד — ואתם מחפשים פתרון שסוף סוף יעבוד. מרחתם קרם, ריססתם תרסיס — ועדיין הילד חזר הביתה עם עקיצות.</p>"
-          }
-        },
-        "p_4": {
-          "type": "highlight",
-          "settings": {
-            "text": "יש פתרון אחר. מדבקה שמדביקים על הבגד — לא על העור — ומרחיקה יתושים עד 8 שעות."
-          }
-        },
-        "p_5": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>המדבקה מכילה ציטרונלה — שמן צמחי טבעי שיוצר בועת ריח סביב הילד. יתושים מנווטים לפי ריח, ובועת הריח פשוט מסתירה אותו מהם. ככה עור הילד לא נוגע בשום דבר.</p>"
-          }
-        },
-        "p_6": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>הילד חוזר הביתה בלי עקיצות. אתם חוזרים הביתה רגועים — כי ידעתם שנתתם לו הגנה מלאה, בלי לשים שום דבר על העור שלו.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "p_1",
-        "p_2",
-        "p_3",
-        "p_4",
-        "p_5",
-        "p_6"
-      ],
-      "settings": {
-        "eyebrow": "למה הורים עוברים למדבקות",
-        "headline": "הדרך הכי יעילה להגן על הילד שלך מיתושים… <br>היא <mark>לא לשים שום דבר על העור שלו.</mark>",
-        "heading_size": "h1",
-        "text_align": "center",
-        "content_width": 68,
-        "accent": "#2e44d4",
-        "color_scheme": "scheme-1",
-        "padding_top": 56,
-        "padding_bottom": 40
-      }
-    },
-    "feature-slider": {
-      "type": "feature-slider",
-      "blocks": {
-        "s_1": {
-          "type": "slide",
-          "settings": {
-            "emoji": "👕",
-            "image_position": "start",
-            "heading": "הדבר הכי חשוב",
-            "text": "<p>מדביקים על הבגד — לא על הילד. עור הילד לא בא במגע עם שום דבר.</p>"
-          }
-        },
-        "s_2": {
-          "type": "slide",
-          "settings": {
-            "emoji": "🌿",
-            "image_position": "end",
-            "heading": "מרכיבים",
-            "text": "<p>ציטרונלה טבעית בלבד. סרט דבק בדרגה רפואית. מגיל 0.</p>"
-          }
-        },
-        "s_3": {
-          "type": "slide",
-          "settings": {
-            "emoji": "🛡️",
-            "image_position": "start",
-            "heading": "איך זה עובד",
-            "text": "<p>יתושים מנווטים לפי ריח. הציטרונלה על הבגד יוצרת בועת הגנה שמסתירה את הילד מהם — בלי לגעת בו.</p>"
-          }
-        },
-        "s_4": {
-          "type": "slide",
-          "settings": {
-            "emoji": "⏱️",
-            "image_position": "end",
-            "heading": "כמות ותזמון",
-            "text": "<p>גיל 0–2: מדבקה אחת על הגב · 3–5: 2 מדבקות · 6+: עד 4 מדבקות. מחליפים כל 8 שעות.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "s_1",
-        "s_2",
-        "s_3",
-        "s_4"
-      ],
-      "settings": {
-        "eyebrow": "כל מה שחשוב לדעת",
-        "title": "למה זה עובד — בקצרה",
-        "heading_size": "h1",
-        "autoplay": true,
-        "autoplay_speed": 4,
-        "show_arrows": true,
-        "show_numbers": true,
-        "image_size": "large",
-        "image_fit": "cover",
-        "accent": "#2e44d4",
-        "color_scheme": "scheme-2",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "how-it-works": {
-      "type": "how-it-works",
-      "blocks": {
-        "st_1": {
-          "type": "step",
-          "settings": {
-            "emoji": "😀",
-            "title": "1. בוחרים פרצוף",
-            "text": "<p>הילד בוחר איזו מדבקה חמודה לשים — בלי מאבק, בלי בכי.</p>"
-          }
-        },
-        "st_2": {
-          "type": "step",
-          "settings": {
-            "emoji": "👕",
-            "title": "2. מדביקים על הבגד",
-            "text": "<p>על החולצה או הצווארון — קרוב לפנים, רחוק מהעור.</p>"
-          }
-        },
-        "st_3": {
-          "type": "step",
-          "settings": {
-            "emoji": "⏱️",
-            "title": "3. מוגנים עד 8 שעות",
-            "text": "<p>בועת ציטרונלה מרחיקה יתושים לאורך כל היום. מחליפים כל 8 שעות.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "st_1",
-        "st_2",
-        "st_3"
-      ],
-      "settings": {
-        "eyebrow": "פשוט וקל",
-        "title": "איך משתמשים?",
-        "heading_size": "h1",
-        "subtext": "שלושה צעדים להגנה טבעית",
-        "show_connector": true,
-        "color_scheme": "scheme-1",
-        "accent": "#2e44d4",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "comparison": {
-      "type": "comparison",
-      "blocks": {
-        "r_1": {
-          "type": "row",
-          "settings": {
-            "feature": "ללא מגע עם עור הילד",
-            "us_value": "✓",
-            "them_value": "✗"
-          }
-        },
-        "r_2": {
-          "type": "row",
-          "settings": {
-            "feature": "אפס ספיגה לזרם הדם",
-            "us_value": "✓",
-            "them_value": "5–17% נספג"
-          }
-        },
-        "r_3": {
-          "type": "row",
-          "settings": {
-            "feature": "בטוח מגיל 0",
-            "us_value": "✓",
-            "them_value": "✗ לא מתחת לגיל 2"
-          }
-        },
-        "r_4": {
-          "type": "row",
-          "settings": {
-            "feature": "ללא ריח כימי ושומן",
-            "us_value": "✓",
-            "them_value": "✗"
-          }
-        },
-        "r_5": {
-          "type": "row",
-          "settings": {
-            "feature": "מותר בטיסה (לא נוזל)",
-            "us_value": "✓",
-            "them_value": "✗"
-          }
-        },
-        "r_6": {
-          "type": "row",
-          "settings": {
-            "feature": "הגנה עד 8 שעות",
-            "us_value": "✓",
-            "them_value": "משתנה"
-          }
-        }
-      },
-      "block_order": [
-        "r_1",
-        "r_2",
-        "r_3",
-        "r_4",
-        "r_5",
-        "r_6"
-      ],
-      "settings": {
-        "eyebrow": "ההבדל ברור",
-        "title": "ציטרונלה על הבגד מול תרסיס על העור",
-        "heading_size": "h1",
-        "us_label": "מדבקות ELORA",
-        "them_label": "תרסיסי DEET",
-        "color_scheme": "scheme-1",
-        "accent": "#2e44d4",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "science-spotlight": {
-      "type": "science-spotlight",
-      "blocks": {
-        "pan_1": {
-          "type": "panel",
-          "settings": {
-            "image_position": "start",
-            "heading": "100% ציטרונלה טבעית",
-            "text": "<p>שמן צמחי אתרי שמרחיק יתושים בעדינות — בלי DEET, בלי כימיקלים סינתטיים, בלי פשרות על הבטיחות.</p>"
-          }
-        },
-        "pan_2": {
-          "type": "panel",
-          "settings": {
-            "image_position": "end",
-            "heading": "אפס ספיגה עורית",
-            "text": "<p>כשהחומר על החולצה ולא על העור — אין ספיגה לזרם הדם, אין שאיפה ישירה, ואין גירוי לעיניים. הציטרונלה על החולצה, לא בדמו של הילד.</p>"
-          }
-        },
-        "pan_3": {
-          "type": "panel",
-          "settings": {
-            "image_position": "start",
-            "heading": "בטוח מגיל 0",
-            "text": "<p>עור התינוק דק ורגיש. לכן אנחנו לא מניחים עליו כלום — ההגנה נשארת על הבגד, לאורך כל היום.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "pan_1",
-        "pan_2",
-        "pan_3"
-      ],
-      "settings": {
-        "eyebrow": "מאחורי הקלעים",
-        "title": "המדע: על החולצה, לא בדם",
-        "heading_size": "h1",
-        "image_size": "large",
-        "image_width": 40,
-        "image_fit": "contain",
-        "image_align": "auto",
-        "panel_gap": 16,
-        "show_card_waves": true,
-        "card_radius": 16,
-        "vertical_align": "center",
-        "top_wave": false,
-        "bottom_wave": false,
-        "wave_color": "#ffffff",
-        "button_label": "",
-        "accent": "#2e44d4",
-        "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "reviews": {
-      "type": "reviews",
-      "blocks": {
-        "rv_1": {
-          "type": "review",
-          "settings": {
-            "rating": "5",
-            "title": "סוף סוף בלי אשמה",
-            "quote": "<p>הפסקתי לרסס OFF על בת השנתיים שלי. מדביקה מדבקה על החולצה והיא משחקת בחצר בלי עקיצות. שקט נפשי אמיתי.</p>",
-            "author": "נועה מ.",
-            "verified": true
-          }
-        },
-        "rv_2": {
-          "type": "review",
-          "settings": {
-            "rating": "5",
-            "title": "מאז שהתחלנו — לא ביקרנו אצל הרופא",
-            "quote": "<p>לבן שלי כל עקיצה נהיית בועה ענקית. שמים מדבקה על הפיג'מה ושנינו ישנים כל הלילה. משנה חיים.</p>",
-            "author": "רועי א.",
-            "verified": true
-          }
-        },
-        "rv_3": {
-          "type": "review",
-          "settings": {
-            "rating": "5",
-            "title": "יתושים אוהבים אותי — כבר לא",
-            "quote": "<p>בכל מנגל רק אני נאכל. מדבקה אחת על החולצה ואני יושב בחוץ בשקט, בלי ריח של OFF. לא חוזר לתרסיס.</p>",
-            "author": "אבי ט.",
-            "verified": true
-          }
-        }
-      },
-      "block_order": [
-        "rv_1",
-        "rv_2",
-        "rv_3"
-      ],
-      "settings": {
-        "eyebrow": "אלפי הורים מרוצים",
-        "title": "מה הורים מספרים עלינו",
-        "heading_size": "h1",
-        "show_summary": true,
-        "rating_value": "מצוין 4.9/5",
-        "reviews_count": "2,943 ביקורות",
-        "columns_desktop": 3,
-        "color_scheme": "scheme-1",
-        "accent": "#2e44d4",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "guarantee": {
-      "type": "guarantee",
-      "settings": {
-        "emoji": "🛡️",
-        "eyebrow": "קונים בראש שקט",
-        "heading": "אחריות 365 יום — או שקיבלתם החזר מלא",
-        "heading_size": "h1",
-        "text": "<p>אם לא אהבתם — נחזיר לכם את הכסף, בלי שאלות. אנחנו בטוחים שגם אתם תעברו למדבקות.</p>",
-        "button_label": "קנו עכשיו בראש שקט",
-        "button_link": "",
-        "color_scheme": "scheme-2",
-        "accent": "#2e44d4",
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
-    "np-faq": {
-      "type": "np-faq",
-      "blocks": {
-        "q_1": {
-          "type": "faq",
-          "settings": {
-            "open_default": true,
-            "question": "האם זה באמת עובד?",
-            "answer": "<p>כן. הציטרונלה על הבגד יוצרת בועת ריח שמסתירה את הילד מהיתושים — הם מנווטים לפי ריח, לא לפי מיקום מדויק. כל מדבקה אפקטיבית עד 8 שעות, ואלפי הורים כבר עברו לשיטה הזו. במחקר Poseidon Sciences נמדדה הגנה טובה יותר ממוצרים דומים.</p>"
-          }
-        },
-        "q_2": {
-          "type": "faq",
-          "settings": {
-            "question": "כמה מדבקות לשים?",
-            "answer": "<p>גיל 0–2: מדבקה אחת על גב החולצה. גיל 3–5: 2 מדבקות. גיל 6+: 2–4 מדבקות. מחליפים כל 8 שעות.</p>"
-          }
-        },
-        "q_3": {
-          "type": "faq",
-          "settings": {
-            "question": "כמה זמן כל מדבקה מחזיקה?",
-            "answer": "<p>כל מדבקה אפקטיבית עד 8 שעות. למנגל של שישי בערב — מדבקה אחת לפני היציאה מספיקה עד שחוזרים הביתה.</p>"
-          }
-        },
-        "q_4": {
-          "type": "faq",
-          "settings": {
-            "question": "מה עם הפנים?",
-            "answer": "<p>מדבקה על הצווארון או על החולצה העליונה יוצרת אזור ריח סביב הפנים. יתושים מתניידים לפי ריח, ולכן אין צורך למרוח שום דבר על הפנים עצמן.</p>"
-          }
-        },
-        "q_5": {
-          "type": "faq",
-          "settings": {
-            "question": "ניסיתי דברים דומים ולא עזרו — במה זה שונה?",
-            "answer": "<p>רוב המוצרים הדומים הם צמידים — שמגנים רק על נקודה אחת. המדבקה על הבגד מפזרת ריח על שטח גדול בהרבה סביב כל הגוף. זה מנגנון שונה לגמרי.</p>"
-          }
-        },
-        "q_6": {
-          "type": "faq",
-          "settings": {
-            "question": "בטוח לתינוקות ומאיזה גיל?",
-            "answer": "<p>מתאים מגיל 0. המדבקה מודבקת על הבגד — לא על העור — כך שאין ספיגה, אין מגע ואין שאיפה ישירה. ציטרונלה טבעית בלבד וסרט דבק בדרגה רפואית.</p>"
-          }
-        },
-        "q_7": {
-          "type": "faq",
-          "settings": {
-            "question": "מתאים גם למבוגרים?",
-            "answer": "<p>בהחלט. אם יתושים 'אוהבים' אתכם בכל מנגל וטיול — 2 מדבקות על החולצה ואחת על המכנס נותנות כיסוי מלא, בלי ריח של תרסיס ובלי שומן על העור.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "q_1",
-        "q_2",
-        "q_3",
-        "q_4",
-        "q_5",
-        "q_6",
-        "q_7"
-      ],
-      "settings": {
-        "eyebrow": "עוד לא בטוחים?",
-        "title": "שאלות נפוצות",
-        "heading_size": "h1",
-        "subtext": "כל מה שרציתם לדעת לפני שמזמינים",
-        "content_width": 72,
-        "accent": "#2e44d4",
-        "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 48
+        "heading": "גילויים",
+        "heading_size": "h2",
+        "open_by_default": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 0
       }
     },
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "מוצרים נוספים שאהבו",
+        "heading": "Related products",
         "heading_size": "h2",
         "products_to_show": 4,
         "columns_desktop": 4,
@@ -649,15 +99,7 @@
   },
   "order": [
     "main",
-    "trust-bar",
-    "product-story",
-    "feature-slider",
-    "how-it-works",
-    "comparison",
-    "science-spotlight",
-    "np-faq",
-    "reviews",
-    "guarantee",
+    "disclosures",
     "related-products"
   ]
 }
