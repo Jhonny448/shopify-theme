@@ -1,0 +1,74 @@
+/* ============================================================
+   Product Story — editorial PAS narrative (RTL-native)
+   ============================================================ */
+.story__inner {
+  max-width: var(--story-max, 68rem);
+  margin-inline: auto;
+  text-align: var(--story-align, center);
+}
+
+.story__eyebrow { margin-block-end: 1.6rem; }
+
+.story__headline {
+  color: var(--np-green-dark);
+  line-height: 1.15;
+  margin: 0 0 2.4rem;
+  overflow-wrap: break-word;
+}
+/* Highlighted key phrase inside the headline */
+.story__headline mark {
+  background: linear-gradient(180deg, transparent 55%, var(--np-green-soft) 55%);
+  color: inherit;
+  padding: 0 0.2em;
+  border-radius: 0.3rem;
+}
+
+.story__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.story__para {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.75;
+  color: rgb(var(--color-foreground));
+  opacity: 0.92;
+  overflow-wrap: break-word;
+}
+.story__para p { margin: 0; }
+.story__para p + p { margin-block-start: 1rem; }
+
+/* Emphasised solution line — larger, brand colour, subtle rule */
+.story__highlight {
+  margin: 0.8rem 0;
+  font-size: 2rem;
+  line-height: 1.4;
+  font-weight: 700;
+  color: var(--np-green-dark);
+  padding-inline-start: 1.6rem;
+  border-inline-start: 0.4rem solid var(--np-green);
+  text-align: start;
+  overflow-wrap: break-word;
+}
+
+.story__cta { margin-block-start: 3.2rem; text-align: center; }
+.story__btn {
+  background: var(--np-green);
+  color: #fff;
+  border: none;
+  border-radius: var(--np-radius-pill);
+  padding: 1.5rem 3.6rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  box-shadow: 0 0.6rem 1.6rem rgba(46, 68, 212, 0.28);
+}
+@media (hover: hover) {
+  .story__btn:hover { background: var(--np-green-dark); transform: translateY(-0.2rem); }
+}
+
+@media screen and (min-width: 750px) {
+  .story__para { font-size: 1.8rem; }
+  .story__highlight { font-size: 2.6rem; }
+}

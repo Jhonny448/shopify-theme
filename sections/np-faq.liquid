@@ -1,0 +1,99 @@
+{{ 'natpat-kit.css' | asset_url | stylesheet_tag }}
+{{ 'np-faq.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} {
+    --np-green: {{ section.settings.accent | default: '#2e44d4' }};
+    --np-green-dark: {{ section.settings.accent | default: '#2e44d4' | color_darken: 12 }};
+    --np-green-soft: {{ section.settings.accent | default: '#2e44d4' | color_lighten: 45 }};
+    --faq-max: {{ section.settings.content_width }}rem;
+  }
+{%- endstyle -%}
+
+<div class="np-section faq color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {%- if section.settings.title != blank or section.settings.eyebrow != blank -%}
+      <div class="np-head">
+        {%- if section.settings.eyebrow != blank -%}<span class="np-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="np-head__title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtext != blank -%}<p class="np-head__subtext">{{ section.settings.subtext }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="faq__list">
+      {%- for block in section.blocks -%}
+        <details class="faq__item"{% if block.settings.open_default %} open{% endif %} {{ block.shopify_attributes }}>
+          <summary class="faq__q">
+            <span class="faq__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+            </span>
+            <span class="faq__q-text">{{ block.settings.question }}</span>
+          </summary>
+          <div class="faq__a rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "שאלות נפוצות (NatPat)",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "עוד לא בטוחים?" },
+    { "type": "inline_richtext", "id": "title", "label": "Heading", "default": "שאלות נפוצות" },
+    {
+      "type": "select", "id": "heading_size", "label": "Heading size",
+      "options": [ { "value": "h2", "label": "Medium" }, { "value": "h1", "label": "Large" } ],
+      "default": "h1"
+    },
+    { "type": "text", "id": "subtext", "label": "Subtext", "default": "כל מה שרציתם לדעת לפני שמזמינים" },
+    { "type": "range", "id": "content_width", "min": 50, "max": 90, "step": 2, "unit": "rem", "label": "Content width", "default": 72 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "accent", "label": "Accent color", "default": "#2e44d4" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "שאלה",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "שאלה" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>תשובה.</p>" },
+        { "type": "checkbox", "id": "open_default", "label": "Open by default", "default": false }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "שאלות נפוצות (NatPat)",
+      "blocks": [
+        { "type": "faq", "settings": { "open_default": true, "question": "האם זה באמת עובד?", "answer": "<p>כן. הציטרונלה על הבגד יוצרת בועת ריח שמסתירה את הילד מהיתושים — הם מנווטים לפי ריח, לא לפי מיקום מדויק. כל מדבקה אפקטיבית עד 8 שעות, ואלפי הורים כבר עברו לשיטה הזו.</p>" } },
+        { "type": "faq", "settings": { "question": "כמה מדבקות לשים?", "answer": "<p>גיל 0–2: מדבקה אחת על גב החולצה. גיל 3–5: 2 מדבקות. גיל 6+: 2–4 מדבקות. מחליפים כל 8 שעות.</p>" } },
+        { "type": "faq", "settings": { "question": "מה עם הפנים?", "answer": "<p>מדבקה על הצווארון או על החולצה העליונה יוצרת אזור ריח סביב הפנים. יתושים מתניידים לפי ריח, ולכן אין צורך למרוח שום דבר על הפנים עצמן.</p>" } },
+        { "type": "faq", "settings": { "question": "ניסיתי דברים דומים ולא עזרו", "answer": "<p>רוב המוצרים הדומים הם צמידים — שמגנים רק על נקודה אחת. המדבקה על הבגד מפזרת ריח על שטח גדול בהרבה סביב כל הגוף. זה מנגנון שונה לגמרי.</p>" } },
+        { "type": "faq", "settings": { "question": "בטוח לתינוקות?", "answer": "<p>לגמרי. המדבקה מודבקת על הבגד — לא על העור — כך שאין ספיגה, אין מגע ואין שאיפה ישירה. מתאים מגיל 0, עם ציטרונלה טבעית בלבד וסרט דבק בדרגה רפואית.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

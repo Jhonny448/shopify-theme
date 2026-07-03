@@ -1,0 +1,259 @@
+{{ 'natpat-kit.css' | asset_url | stylesheet_tag }}
+{{ 'feature-slider.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} {
+    --np-green: {{ section.settings.accent | default: '#2e44d4' }};
+    --np-green-dark: {{ section.settings.accent | default: '#2e44d4' | color_darken: 12 }};
+    --np-green-soft: {{ section.settings.accent | default: '#2e44d4' | color_lighten: 45 }};
+    {%- case section.settings.image_size -%}
+      {%- when 'small' -%}--fslider-img-h: 16rem;
+      {%- when 'large' -%}--fslider-img-h: 34rem;
+      {%- when 'xlarge' -%}--fslider-img-h: 44rem;
+      {%- else -%}--fslider-img-h: 24rem;
+    {%- endcase -%}
+  }
+{%- endstyle -%}
+
+<div class="np-section fslider color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {%- if section.settings.title != blank or section.settings.eyebrow != blank -%}
+      <div class="np-head">
+        {%- if section.settings.eyebrow != blank -%}<span class="np-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="np-head__title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtext != blank -%}<p class="np-head__subtext">{{ section.settings.subtext }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <image-autoslider
+      class="fslider__wrap"
+      data-autoplay="{{ section.settings.autoplay }}"
+      data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
+    >
+      <div class="fslider__track" role="list">
+        {%- for block in section.blocks -%}
+          <div class="fslider__slide" role="listitem" {{ block.shopify_attributes }}>
+            <div class="fslider__card fslider__card--img-{{ block.settings.image_position }}">
+              <div class="fslider__media" data-fit="{{ section.settings.image_fit }}">
+                {%- if block.settings.image != blank -%}
+                  {%- assign fs_alt = block.settings.heading | strip_html | escape -%}
+                  {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '300,450,600,800,900', class: 'fslider__img', alt: fs_alt }}
+                {%- else -%}
+                  <div class="fslider__placeholder" aria-hidden="true">{{ block.settings.emoji | default: '📸' }}</div>
+                {%- endif -%}
+              </div>
+              <div class="fslider__body">
+                {%- if section.settings.show_numbers -%}<span class="fslider__num">{{ forloop.index }}</span>{%- endif -%}
+                {%- if block.settings.heading != blank -%}<h3 class="fslider__heading inline-richtext">{{ block.settings.heading }}</h3>{%- endif -%}
+                {%- if block.settings.text != blank -%}<div class="fslider__text rte">{{ block.settings.text }}</div>{%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="fslider__controls">
+        {%- if section.settings.show_arrows -%}
+          <button class="fslider__arrow fslider__arrow--prev" type="button" aria-label="הקודם" data-dir="prev">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+        {%- endif -%}
+        <div class="fslider__dots" role="tablist" aria-label="שקופיות"></div>
+        {%- if section.settings.show_arrows -%}
+          <button class="fslider__arrow fslider__arrow--next" type="button" aria-label="הבא" data-dir="next">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M15 6l-6 6 6 6"/></svg>
+          </button>
+        {%- endif -%}
+      </div>
+    </image-autoslider>
+  </div>
+</div>
+
+<script>
+  if (!customElements.get('image-autoslider')) {
+    customElements.define('image-autoslider', class extends HTMLElement {
+      connectedCallback() {
+        this.track = this.querySelector('.fslider__track');
+        this.slides = Array.from(this.querySelectorAll('.fslider__slide'));
+        this.dotsWrap = this.querySelector('.fslider__dots');
+        this.index = 0;
+        this.timer = null;
+        if (!this.track || this.slides.length === 0) return;
+
+        this.reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        this.autoplay = this.dataset.autoplay === 'true' && !this.reduceMotion && this.slides.length > 1;
+        this.speed = parseInt(this.dataset.speed, 10) || 4000;
+
+        this.buildDots();
+        this.bindArrows();
+
+        this.track.addEventListener('scroll', () => {
+          window.clearTimeout(this._scrollT);
+          this._scrollT = window.setTimeout(() => this.syncFromScroll(), 120);
+        }, { passive: true });
+
+        this.addEventListener('mouseenter', () => this.stop());
+        this.addEventListener('mouseleave', () => this.start());
+        this.addEventListener('focusin', () => this.stop());
+        this.addEventListener('focusout', () => this.start());
+        document.addEventListener('visibilitychange', () => document.hidden ? this.stop() : this.start());
+
+        this.setActive(0);
+        this.start();
+      }
+
+      goTo(i, smooth = true) {
+        const n = this.slides.length;
+        this.index = (i + n) % n;
+        const slide = this.slides[this.index];
+        const delta = slide.getBoundingClientRect().left - this.track.getBoundingClientRect().left;
+        this.track.scrollBy({ left: delta, behavior: smooth ? 'smooth' : 'auto' });
+        this.setActive(this.index);
+      }
+
+      next() { this.goTo(this.index + 1); }
+      prev() { this.goTo(this.index - 1); }
+
+      start() {
+        if (!this.autoplay || this.timer) return;
+        this.timer = window.setInterval(() => this.next(), this.speed);
+      }
+      stop() { window.clearInterval(this.timer); this.timer = null; }
+
+      syncFromScroll() {
+        const mid = this.track.getBoundingClientRect().left + this.track.clientWidth / 2;
+        let best = 0, bestDist = Infinity;
+        this.slides.forEach((s, i) => {
+          const r = s.getBoundingClientRect();
+          const c = r.left + r.width / 2;
+          const d = Math.abs(c - mid);
+          if (d < bestDist) { bestDist = d; best = i; }
+        });
+        this.index = best;
+        this.setActive(best);
+      }
+
+      buildDots() {
+        if (!this.dotsWrap) return;
+        this.slides.forEach((_, i) => {
+          const b = document.createElement('button');
+          b.className = 'fslider__dot';
+          b.type = 'button';
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-label', 'שקופית ' + (i + 1));
+          b.addEventListener('click', () => { this.stop(); this.goTo(i); });
+          this.dotsWrap.appendChild(b);
+        });
+        this.dots = Array.from(this.dotsWrap.children);
+      }
+
+      bindArrows() {
+        this.querySelectorAll('.fslider__arrow').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            this.stop();
+            btn.dataset.dir === 'prev' ? this.prev() : this.next();
+          });
+        });
+      }
+
+      setActive(i) {
+        if (!this.dots) return;
+        this.dots.forEach((d, j) => {
+          d.classList.toggle('is-active', j === i);
+          d.setAttribute('aria-selected', j === i ? 'true' : 'false');
+        });
+      }
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "תמונות רצות (NatPat)",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "כל מה שחשוב לדעת" },
+    { "type": "inline_richtext", "id": "title", "label": "Heading", "default": "למה זה עובד — בקצרה" },
+    {
+      "type": "select", "id": "heading_size", "label": "Heading size",
+      "options": [ { "value": "h2", "label": "Medium" }, { "value": "h1", "label": "Large" } ],
+      "default": "h1"
+    },
+    { "type": "text", "id": "subtext", "label": "Subtext" },
+
+    { "type": "header", "content": "Slider" },
+    { "type": "checkbox", "id": "autoplay", "label": "Auto-play (running)", "default": true },
+    { "type": "range", "id": "autoplay_speed", "min": 2, "max": 8, "step": 1, "unit": "s", "label": "Seconds per slide", "default": 4 },
+    { "type": "checkbox", "id": "show_arrows", "label": "Show arrows", "default": true },
+    { "type": "checkbox", "id": "show_numbers", "label": "Show numbers", "default": true },
+
+    { "type": "header", "content": "Image" },
+    {
+      "type": "select", "id": "image_size", "label": "Image height",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "xlarge", "label": "Extra large" }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "select", "id": "image_fit", "label": "Image fit",
+      "options": [ { "value": "cover", "label": "Cover (fill)" }, { "value": "contain", "label": "Contain (full image)" } ],
+      "default": "cover"
+    },
+
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "accent", "label": "Accent color", "default": "#2e44d4" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "שקופית",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "emoji", "label": "Emoji (if no image)", "default": "📸" },
+        {
+          "type": "select", "id": "image_position", "label": "Image position (desktop)",
+          "options": [ { "value": "start", "label": "Start (right in RTL)" }, { "value": "end", "label": "End (left in RTL)" } ],
+          "default": "start"
+        },
+        { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "כותרת" },
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>טקסט קצר.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "תמונות רצות (NatPat)",
+      "blocks": [
+        { "type": "slide", "settings": { "emoji": "👕", "image_position": "start", "heading": "הדבר הכי חשוב", "text": "<p>מדביקים על הבגד — לא על הילד. עור הילד לא בא במגע עם שום דבר.</p>" } },
+        { "type": "slide", "settings": { "emoji": "🌿", "image_position": "end", "heading": "מרכיבים", "text": "<p>ציטרונלה טבעית בלבד. סרט דבק בדרגה רפואית. מגיל 0.</p>" } },
+        { "type": "slide", "settings": { "emoji": "🛡️", "image_position": "start", "heading": "איך זה עובד", "text": "<p>יתושים מנווטים לפי ריח. הציטרונלה על הבגד יוצרת בועת הגנה שמסתירה את הילד מהם — בלי לגעת בו.</p>" } },
+        { "type": "slide", "settings": { "emoji": "⏱️", "image_position": "end", "heading": "כמות ותזמון", "text": "<p>גיל 0–2: מדבקה אחת על הגב · 3–5: 2 מדבקות · 6+: עד 4 מדבקות. מחליפים כל 8 שעות.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
