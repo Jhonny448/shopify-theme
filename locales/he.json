@@ -214,7 +214,7 @@
       "view_full_details": "צפייה בכל הפרטים",
       "xr_button": "צפייה במרחב שלך",
       "xr_button_label": "צפייה במרחב שלך, טוען פריט במציאות רבודה",
-      "taxes_included": "כולל מסים.",
+      "taxes_included": "",
       "duties_included": "כולל מכסים.",
       "duties_and_taxes_included": "כולל מכסים ומסים.",
       "shipping_policy_html": "<a href=\"{{ link }}\">משלוח</a> מחושב בעת התשלום.",
