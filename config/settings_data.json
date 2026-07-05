@@ -11,9 +11,9 @@
   "current": {
     "logo": "shopify://shop_images/LOREN.png",
     "logo_width": 100,
-    "type_header_font": "inter_n4",
+    "type_header_font": "montserrat_n5",
     "heading_scale": 100,
-    "type_body_font": "inter_n4",
+    "type_body_font": "open_sans_n4",
     "body_scale": 100,
     "page_width": 1200,
     "spacing_sections": 0,
