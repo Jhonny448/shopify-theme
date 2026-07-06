@@ -14,14 +14,32 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "image_4KpgGj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LOREN.png",
+            "image_width": 100,
+            "alignment": "center"
+          }
+        },
+        "link_list_PRK8TX": {
+          "type": "link_list",
+          "settings": {
+            "heading": "משפטי",
+            "menu": "footer"
+          }
+        },
         "brand-information": {
           "type": "brand_information",
+          "disabled": true,
           "settings": {
             "show_social": true
           }
         }
       },
       "block_order": [
+        "image_4KpgGj",
+        "link_list_PRK8TX",
         "brand-information"
       ],
       "settings": {
