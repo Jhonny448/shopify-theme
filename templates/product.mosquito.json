@@ -77,17 +77,6 @@
         "padding_bottom": 20
       }
     },
-    "disclosures": {
-      "type": "disclosures",
-      "settings": {
-        "heading": "גילויים",
-        "heading_size": "h2",
-        "open_by_default": false,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 0
-      }
-    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -151,7 +140,6 @@
   "order": [
     "main",
     "custom_liquid_Nw98kb",
-    "disclosures",
     "related-products",
     "custom_liquid_YehYnw",
     "custom_liquid_FaJwnt",
