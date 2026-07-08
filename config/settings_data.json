@@ -142,14 +142,21 @@
       }
     },
     "content_for_index": [],
+    "blocks": {
+      "12607413109132442573": {
+        "type": "shopify://apps/bundleup/blocks/offers/5f0f0541-2e31-4959-b7a9-b27994885fe8",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
           "background": "#ffffff",
           "background_gradient": "",
-          "text": "#0B0B0B",
-          "button": "#1F4FD0",
-          "button_label": "#FFFFFF",
+          "text": "#0b0b0b",
+          "button": "#1f4fd0",
+          "button_label": "#ffffff",
           "secondary_button_label": "#121212",
           "shadow": "#121212"
         }
