@@ -16,6 +16,13 @@
           "type": "title",
           "settings": {}
         },
+        "vouch_star_rating_KgcFRb": {
+          "type": "shopify://apps/vouch/blocks/star_rating/019c19f2-9a2e-7832-a209-16355608caa1",
+          "settings": {
+            "product": "{{product}}",
+            "colour": "#ffb400"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -58,6 +65,7 @@
       },
       "block_order": [
         "title",
+        "vouch_star_rating_KgcFRb",
         "price",
         "variant_picker",
         "quantity_selector",
