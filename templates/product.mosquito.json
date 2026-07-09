@@ -61,6 +61,12 @@
           "type": "description",
           "disabled": true,
           "settings": {}
+        },
+        "vouch_snippet_carousel_X3yeTb": {
+          "type": "shopify://apps/vouch/blocks/snippet-carousel/019c19f2-9a2e-7832-a209-16355608caa1",
+          "settings": {
+            "product": "{{product}}"
+          }
         }
       },
       "block_order": [
@@ -72,7 +78,8 @@
         "buy_buttons",
         "custom_liquid_fx83iW",
         "custom_liquid_kUEDYn",
-        "description"
+        "description",
+        "vouch_snippet_carousel_X3yeTb"
       ],
       "settings": {
         "enable_sticky_info": true,
