@@ -107,6 +107,23 @@
         "padding_bottom": 20
       }
     },
+    "1783591245178521c5": {
+      "type": "apps",
+      "blocks": {
+        "vouch_hero_reel_carousel_kz4zyt": {
+          "type": "shopify://apps/vouch/blocks/hero-reel-carousel/019c19f2-9a2e-7832-a209-16355608caa1",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "vouch_hero_reel_carousel_kz4zyt"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -202,6 +219,7 @@
   "order": [
     "main",
     "custom_liquid_Nw98kb",
+    "1783591245178521c5",
     "related-products",
     "custom_liquid_YehYnw",
     "custom_liquid_FaJwnt",
