@@ -398,5 +398,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".header__heading-link, header a[href=\"/\"] {pointer-events: none !important; cursor: default !important; }"
+    ]
   }
 }
