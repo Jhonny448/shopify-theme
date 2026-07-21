@@ -147,6 +147,16 @@
         "type": "shopify://apps/bundleup/blocks/offers/5f0f0541-2e31-4959-b7a9-b27994885fe8",
         "disabled": false,
         "settings": {}
+      },
+      "2200952712151285029": {
+        "type": "shopify://apps/microsoft-clarity/blocks/brandAgents_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
+      "2567389343055140935": {
+        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
@@ -401,7 +411,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".header__heading-link, header a[href=\"/\"] {pointer-events: none !important; cursor: default !important; }"
+      ".header__heading-link,header a[href=\"/\"] {pointer-events: none !important; cursor: default !important;}"
     ]
   }
 }
