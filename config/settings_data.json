@@ -157,6 +157,19 @@
         "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
         "disabled": false,
         "settings": {}
+      },
+      "6115066875106655889": {
+        "type": "shopify://apps/cartify/blocks/cart_v2/4c314cb2-c950-45ff-87e2-69eaa9d12b58",
+        "disabled": false,
+        "settings": {
+          "trigger_selector": "",
+          "hide_selector": ""
+        }
+      },
+      "15011817489760890076": {
+        "type": "shopify://apps/cartify/blocks/cart_product/4c314cb2-c950-45ff-87e2-69eaa9d12b58",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
