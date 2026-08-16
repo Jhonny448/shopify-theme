@@ -23,6 +23,12 @@
             "colour": "#ffb400"
           }
         },
+        "custom_liquid_HFjHrq": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n  .nail-benefits {\n    direction: rtl;\n    text-align: right;\n    width: 100%;\n    margin: 0;\n    padding: 0;\n  }\n\n  .nail-benefits__item {\n    display: flex;\n    align-items: flex-start;\n    justify-content: flex-start;\n    gap: 16px;\n    margin-bottom: 22px;\n    font-size: 22px;\n    line-height: 1.45;\n    font-weight: 400;\n    color: #171717;\n  }\n\n  .nail-benefits__item:last-child {\n    margin-bottom: 0;\n  }\n\n  .nail-benefits__check {\n    flex: 0 0 auto;\n    font-size: 27px;\n    line-height: 1.15;\n    font-weight: 500;\n    color: #111;\n  }\n\n  .nail-benefits__text {\n    flex: 1;\n  }\n\n  @media screen and (max-width: 749px) {\n    .nail-benefits__item {\n      gap: 12px;\n      margin-bottom: 16px;\n      font-size: 17px;\n      line-height: 1.5;\n    }\n\n    .nail-benefits__check {\n      font-size: 22px;\n    }\n  }\n</style>\n\n<div class=\"nail-benefits\">\n\n  <div class=\"nail-benefits__item\">\n    <span class=\"nail-benefits__check\">✓</span>\n    <span class=\"nail-benefits__text\">\n      עוזר לציפורניים הטבעיות להשתקם ולהתחזק.\n    </span>\n  </div>\n\n  <div class=\"nail-benefits__item\">\n    <span class=\"nail-benefits__check\">✓</span>\n    <span class=\"nail-benefits__text\">\n      הדבקה והסרה פשוטות תוך דקות – אצלך בבית.\n    </span>\n  </div>\n\n  <div class=\"nail-benefits__item\">\n    <span class=\"nail-benefits__check\">✓</span>\n    <span class=\"nail-benefits__text\">\n      בלי UV, בלי אצטון, בלי שיוף במכונה ובלי לפגוע בציפורן.\n    </span>\n  </div>\n\n</div>"
+          }
+        },
         "price": {
           "type": "price",
           "disabled": true,
@@ -69,6 +75,7 @@
       "block_order": [
         "title",
         "vouch_star_rating_KgcFRb",
+        "custom_liquid_HFjHrq",
         "price",
         "variant_picker",
         "quantity_selector",
