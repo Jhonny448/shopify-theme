@@ -58,6 +58,12 @@
             "show_gift_card_recipient": false
           }
         },
+        "custom_liquid_9BXwGB": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n  .money-back-box {\n    direction: rtl;\n    width: 100%;\n    box-sizing: border-box;\n\n    display: flex;\n    align-items: center;\n    gap: 20px;\n\n    padding: 22px 24px;\n\n    border: 1.5px solid #e1e1e1;\n    border-radius: 12px;\n\n    background: #fff;\n    color: #161616;\n  }\n\n  .money-back-badge {\n    flex: 0 0 78px;\n\n    width: 78px;\n    height: 78px;\n\n    border-radius: 50%;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background: #eadfce;\n    border: 1px solid #d8c8b1;\n\n    text-align: center;\n    box-sizing: border-box;\n  }\n\n  .money-back-badge-inner {\n    width: 64px;\n    height: 64px;\n\n    border: 1px solid #8d8172;\n    border-radius: 50%;\n\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n\n    color: #28231e;\n    line-height: 1;\n  }\n\n  .money-back-badge-number {\n    font-size: 21px;\n    font-weight: 700;\n    margin-bottom: 2px;\n  }\n\n  .money-back-badge-days {\n    font-size: 11px;\n    font-weight: 700;\n  }\n\n  .money-back-content {\n    flex: 1;\n    min-width: 0;\n  }\n\n  .money-back-title {\n    margin: 0 0 8px;\n\n    font-size: 21px;\n    line-height: 1.25;\n    font-weight: 700;\n\n    color: #111;\n  }\n\n  .money-back-text {\n    margin: 0;\n\n    font-size: 18px;\n    line-height: 1.55;\n    font-weight: 400;\n\n    color: #252525;\n  }\n\n  .money-back-link {\n    color: inherit;\n    text-decoration: underline;\n    text-underline-offset: 3px;\n  }\n\n  .money-back-link:hover {\n    opacity: 0.7;\n  }\n\n\n  /* MOBILE */\n  @media screen and (max-width: 749px) {\n\n    .money-back-box {\n      gap: 13px;\n\n      padding: 16px 14px;\n\n      border-radius: 10px;\n    }\n\n    .money-back-badge {\n      flex-basis: 60px;\n\n      width: 60px;\n      height: 60px;\n    }\n\n    .money-back-badge-inner {\n      width: 50px;\n      height: 50px;\n    }\n\n    .money-back-badge-number {\n      font-size: 17px;\n    }\n\n    .money-back-badge-days {\n      font-size: 9px;\n    }\n\n    .money-back-title {\n      margin-bottom: 5px;\n\n      font-size: 16px;\n      line-height: 1.3;\n    }\n\n    .money-back-text {\n      font-size: 14px;\n      line-height: 1.45;\n    }\n  }\n</style>\n\n\n<div class=\"money-back-box\" dir=\"rtl\">\n\n  <div class=\"money-back-content\">\n\n    <div class=\"money-back-title\">\n      100 ימי אחריות להחזר כספי\n    </div>\n\n    <p class=\"money-back-text\">\n      לא התאהבת במדבקות הג׳ל שלנו?\n      נחזיר לך 100% מהכסף.\n      <a href=\"#\" class=\"money-back-link\">\n        לפרטים נוספים\n      </a>\n    </p>\n\n  </div>\n\n\n  <div class=\"money-back-badge\" aria-hidden=\"true\">\n\n    <div class=\"money-back-badge-inner\">\n\n      <span class=\"money-back-badge-number\">\n        100\n      </span>\n\n      <span class=\"money-back-badge-days\">\n        ימים\n      </span>\n\n    </div>\n\n  </div>\n\n</div>"
+          }
+        },
         "description": {
           "type": "description",
           "disabled": true,
@@ -79,6 +85,7 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "custom_liquid_9BXwGB",
         "description",
         "vouch_snippet_carousel_X3yeTb"
       ],
