@@ -217,7 +217,7 @@
       "taxes_included": "",
       "duties_included": "כולל מכסים.",
       "duties_and_taxes_included": "כולל מכסים ומסים.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">משלוח</a> מחושב בעת התשלום.",
+      "shipping_policy_html": "",
       "include_taxes": "המחיר כולל מע\"מ."
     },
     "modal": {
