@@ -1,0 +1,1507 @@
+{% liquid
+  assign bundle_product = section.settings.bundle_product
+  assign slot_count = section.settings.slot_count | default: 4
+%}
+
+<style>
+  #BundleBuilder-{{ section.id }} {
+    direction: rtl;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+
+  #BundleBuilder-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-card {
+    width: 100%;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #ead7c4;
+    border-radius: 14px;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-heading {
+    margin-bottom: 20px;
+    text-align: right;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-title {
+    margin: 0 0 6px;
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 700;
+    color: #181512;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-subtitle {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #655e58;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slots {
+    direction: rtl;
+    display: grid;
+    grid-template-columns: repeat({{ slot_count }}, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 0.86 / 1;
+    padding: 0;
+    overflow: hidden;
+
+    background: #fff;
+    border: 1.5px solid #cfc8c1;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+      border-color .2s ease,
+      box-shadow .2s ease,
+      transform .2s ease;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot:hover {
+    border-color: #8c8279;
+    box-shadow: 0 4px 15px rgba(0,0,0,.055);
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot:active {
+    transform: scale(.98);
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot-plus {
+    position: relative;
+    width: 22px;
+    height: 22px;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot-plus::before,
+  #BundleBuilder-{{ section.id }} .bb-slot-plus::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 20px;
+    height: 1.5px;
+
+    background: #201c19;
+    border-radius: 50px;
+
+    transform: translate(-50%, -50%);
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot-plus::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot-image {
+    display: none;
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot.has-selection .bb-slot-image {
+    display: block;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot.has-selection .bb-slot-plus {
+    display: none;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot-overlay {
+    display: none;
+
+    position: absolute;
+    inset: auto 7px 7px 7px;
+
+    padding: 7px 8px;
+
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    border-radius: 8px;
+
+    font-size: 11px;
+    line-height: 1.25;
+    font-weight: 600;
+
+    color: #191614;
+    text-align: center;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot.has-selection .bb-slot-overlay {
+    display: block;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot-labels {
+    direction: rtl;
+    display: grid;
+    grid-template-columns: repeat({{ slot_count }}, minmax(0,1fr));
+    gap: 10px;
+
+    margin-top: -10px;
+    margin-bottom: 18px;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-slot-label {
+    padding-top: 9px;
+
+    font-size: 11px;
+    line-height: 1.25;
+    color: #504943;
+    text-align: center;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-progress {
+    margin: 2px 0 14px;
+
+    font-size: 13px;
+    line-height: 1.4;
+    color: #554e48;
+
+    text-align: right;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-progress strong {
+    color: #181512;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-offer {
+    margin: 0 0 14px;
+    padding: 12px 14px;
+
+    background: #f8f2eb;
+    border-radius: 9px;
+
+    font-size: 13px;
+    line-height: 1.45;
+    font-weight: 600;
+
+    color: #2b2521;
+    text-align: right;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-submit {
+    width: 100%;
+
+    padding: 15px 20px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #181512;
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+      opacity .2s ease,
+      transform .2s ease;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-submit:active:not(:disabled) {
+    transform: scale(.99);
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-submit:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-error {
+    display: none;
+
+    margin-top: 10px;
+
+    font-size: 13px;
+    line-height: 1.4;
+    color: #a22525;
+    text-align: right;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-error.is-visible {
+    display: block;
+  }
+
+
+  /* ========================================
+     POPUP
+  ======================================== */
+
+  #BundleBuilder-{{ section.id }} .bb-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 999999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,.58);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      opacity .22s ease,
+      visibility .22s ease;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-modal-panel {
+    direction: rtl;
+
+    width: min(680px, 96vw);
+    max-height: 88vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #fff;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow: 0 22px 70px rgba(0,0,0,.2);
+
+    transform: translateY(10px) scale(.98);
+
+    transition: transform .22s ease;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-modal.is-open .bb-modal-panel {
+    transform: translateY(0) scale(1);
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-modal-header {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #eee8e2;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-modal-title {
+    margin: 0;
+
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 700;
+
+    color: #181512;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-modal-close {
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+    border: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    font-family: inherit;
+    font-size: 26px;
+    line-height: 1;
+
+    color: #25211e;
+
+    cursor: pointer;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-search-wrap {
+    flex: 0 0 auto;
+
+    padding: 12px 20px;
+
+    border-bottom: 1px solid #f0ece8;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-search {
+    direction: rtl;
+
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid #ddd5ce;
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #fff;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    color: #191614;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-search:focus {
+    border-color: #9d8d80;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-variants-scroll {
+    flex: 1 1 auto;
+    overflow-y: auto;
+
+    padding: 15px;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-variants {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 12px;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-variant {
+    position: relative;
+
+    padding: 0;
+
+    background: #fff;
+
+    border: 1px solid #e4ddd7;
+    border-radius: 11px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    text-align: right;
+
+    transition:
+      box-shadow .2s ease,
+      border-color .2s ease,
+      transform .2s ease;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-variant:hover:not(:disabled) {
+    border-color: #b7aa9f;
+    box-shadow: 0 5px 17px rgba(0,0,0,.06);
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-variant:active:not(:disabled) {
+    transform: scale(.985);
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-variant-image-wrap {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    background: #f5f3f1;
+    overflow: hidden;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-variant-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-variant-info {
+    padding: 10px;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-variant-name {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+    line-height: 1.35;
+    font-weight: 600;
+
+    color: #201c19;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-add-label {
+    display: inline-flex;
+
+    padding: 6px 9px;
+
+    background: #f5eee7;
+    border-radius: 6px;
+
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 700;
+
+    color: #201c19;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-variant.is-selected {
+    border: 2px solid #211d19;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-variant:disabled {
+    cursor: not-allowed;
+    opacity: .43;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-sold-out {
+    position: absolute;
+
+    top: 8px;
+    right: 8px;
+
+    padding: 5px 7px;
+
+    background: rgba(255,255,255,.92);
+    border-radius: 5px;
+
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 700;
+
+    color: #6e6660;
+  }
+
+  #BundleBuilder-{{ section.id }} .bb-empty {
+    display: none;
+
+    padding: 35px 15px;
+
+    font-size: 14px;
+    color: #68605a;
+
+    text-align: center;
+  }
+
+
+  /* ========================================
+     MOBILE
+  ======================================== */
+
+  @media screen and (max-width: 749px) {
+
+    #BundleBuilder-{{ section.id }} .bb-card {
+      padding: 16px;
+      border-radius: 12px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-title {
+      font-size: 17px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-subtitle {
+      font-size: 13px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-slots,
+    #BundleBuilder-{{ section.id }} .bb-slot-labels {
+      gap: 7px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-slot {
+      border-radius: 9px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-slot-plus {
+      width: 18px;
+      height: 18px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-slot-plus::before,
+    #BundleBuilder-{{ section.id }} .bb-slot-plus::after {
+      width: 16px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-slot-overlay {
+      inset: auto 4px 4px 4px;
+
+      padding: 5px;
+
+      font-size: 9px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-slot-label {
+      font-size: 9.5px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-modal {
+      padding: 10px;
+      align-items: flex-end;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-modal-panel {
+      width: 100%;
+      max-height: 90vh;
+
+      border-radius: 16px 16px 10px 10px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-modal-header {
+      padding: 15px 16px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-search-wrap {
+      padding: 10px 14px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-variants-scroll {
+      padding: 10px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-variants {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 9px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-variant-info {
+      padding: 8px;
+    }
+
+    #BundleBuilder-{{ section.id }} .bb-submit {
+      font-size: 15px;
+    }
+  }
+</style>
+
+
+<div
+  id="BundleBuilder-{{ section.id }}"
+  data-bundle-builder="{{ section.id }}"
+  data-slot-count="{{ slot_count }}"
+  data-allow-duplicates="{{ section.settings.allow_duplicates }}"
+>
+
+  {% if bundle_product != blank %}
+
+    <div class="bb-card">
+
+      <div class="bb-heading">
+
+        <h2 class="bb-title">
+          {{ section.settings.title }}
+        </h2>
+
+        {% if section.settings.subtitle != blank %}
+          <p class="bb-subtitle">
+            {{ section.settings.subtitle }}
+          </p>
+        {% endif %}
+
+      </div>
+
+
+      <!-- SLOTS -->
+
+      <div class="bb-slots">
+
+        {% for index in (1..slot_count) %}
+
+          <button
+            type="button"
+            class="bb-slot"
+            data-slot-index="{{ forloop.index0 }}"
+            aria-label="בחירת צבע {{ index }}"
+          >
+
+            <span class="bb-slot-plus"></span>
+
+            <img
+              class="bb-slot-image"
+              src=""
+              alt=""
+            >
+
+            <span class="bb-slot-overlay"></span>
+
+          </button>
+
+        {% endfor %}
+
+      </div>
+
+
+      <div class="bb-slot-labels">
+
+        {% for index in (1..slot_count) %}
+          <div class="bb-slot-label">
+            צבע {{ index }}
+          </div>
+        {% endfor %}
+
+      </div>
+
+
+      <div class="bb-progress">
+        בחרת
+        <strong class="bb-selected-count">0</strong>
+        מתוך
+        <strong>{{ slot_count }}</strong>
+        צבעים
+      </div>
+
+
+      {% if section.settings.offer_text != blank %}
+
+        <div class="bb-offer">
+          {{ section.settings.offer_text }}
+        </div>
+
+      {% endif %}
+
+
+      <button
+        type="button"
+        class="bb-submit"
+        disabled
+      >
+        {{ section.settings.button_label }}
+      </button>
+
+
+      <div class="bb-error" role="alert"></div>
+
+    </div>
+
+
+    <!-- ====================================
+         POPUP
+    ===================================== -->
+
+    <div
+      class="bb-modal"
+      aria-hidden="true"
+    >
+
+      <div
+        class="bb-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="בחירת צבע"
+      >
+
+        <div class="bb-modal-header">
+
+          <h3 class="bb-modal-title">
+            {{ section.settings.modal_title }}
+          </h3>
+
+          <button
+            type="button"
+            class="bb-modal-close"
+            aria-label="סגירה"
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        {% if section.settings.show_search %}
+
+          <div class="bb-search-wrap">
+
+            <input
+              type="search"
+              class="bb-search"
+              placeholder="{{ section.settings.search_placeholder }}"
+              autocomplete="off"
+            >
+
+          </div>
+
+        {% endif %}
+
+
+        <div class="bb-variants-scroll">
+
+          <div class="bb-variants">
+
+            {% for variant in bundle_product.variants %}
+
+              {% assign variant_image = variant.featured_image | default: bundle_product.featured_image %}
+
+              <button
+                type="button"
+                class="bb-variant"
+                data-variant-id="{{ variant.id }}"
+                data-title="{{ variant.title | escape }}"
+                data-available="{{ variant.available }}"
+                {% if variant_image %}
+                  data-image="{{ variant_image | image_url: width: 700 }}"
+                {% else %}
+                  data-image=""
+                {% endif %}
+
+                {% unless variant.available %}
+                  disabled
+                {% endunless %}
+              >
+
+                <div class="bb-variant-image-wrap">
+
+                  {% if variant_image %}
+
+                    <img
+                      class="bb-variant-image"
+                      src="{{ variant_image | image_url: width: 500 }}"
+                      alt="{{ variant.title | escape }}"
+                      loading="lazy"
+                      width="500"
+                      height="500"
+                    >
+
+                  {% endif %}
+
+
+                  {% unless variant.available %}
+
+                    <span class="bb-sold-out">
+                      אזל מהמלאי
+                    </span>
+
+                  {% endunless %}
+
+                </div>
+
+
+                <div class="bb-variant-info">
+
+                  <span class="bb-variant-name">
+                    {{ variant.title }}
+                  </span>
+
+                  {% if variant.available %}
+                    <span class="bb-add-label">
+                      הוספה +
+                    </span>
+                  {% endif %}
+
+                </div>
+
+              </button>
+
+            {% endfor %}
+
+          </div>
+
+
+          <div class="bb-empty">
+            לא נמצאו צבעים מתאימים
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  {% else %}
+
+    {% if request.design_mode %}
+
+      <div class="bb-card">
+        <strong>
+          בחר מוצר ב־Bundle product בהגדרות הסקשן.
+        </strong>
+      </div>
+
+    {% endif %}
+
+  {% endif %}
+
+</div>
+
+
+<script>
+(function() {
+
+  function initBundleBuilder(root) {
+
+    if (!root || root.dataset.initialized === 'true') return;
+
+    root.dataset.initialized = 'true';
+
+
+    const slotCount =
+      parseInt(root.dataset.slotCount, 10);
+
+    const allowDuplicates =
+      root.dataset.allowDuplicates === 'true';
+
+
+    const slots =
+      Array.from(root.querySelectorAll('.bb-slot'));
+
+    const variantButtons =
+      Array.from(root.querySelectorAll('.bb-variant'));
+
+    const modal =
+      root.querySelector('.bb-modal');
+
+    const closeButton =
+      root.querySelector('.bb-modal-close');
+
+    const submitButton =
+      root.querySelector('.bb-submit');
+
+    const countElement =
+      root.querySelector('.bb-selected-count');
+
+    const errorElement =
+      root.querySelector('.bb-error');
+
+    const searchInput =
+      root.querySelector('.bb-search');
+
+    const emptyElement =
+      root.querySelector('.bb-empty');
+
+
+    if (
+      !slots.length ||
+      !modal ||
+      !submitButton
+    ) {
+      return;
+    }
+
+
+    let activeSlot = 0;
+
+    const selections =
+      new Array(slotCount).fill(null);
+
+
+
+    /* =====================================
+       OPEN / CLOSE MODAL
+    ====================================== */
+
+    function openModal(slotIndex) {
+
+      activeSlot = slotIndex;
+
+      modal.classList.add('is-open');
+
+      modal.setAttribute(
+        'aria-hidden',
+        'false'
+      );
+
+      document.body.style.overflow = 'hidden';
+
+      refreshVariantStates();
+
+      if (searchInput) {
+        searchInput.value = '';
+        filterVariants('');
+      }
+    }
+
+
+    function closeModal() {
+
+      modal.classList.remove('is-open');
+
+      modal.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+      document.body.style.overflow = '';
+    }
+
+
+
+    /* =====================================
+       UPDATE SLOTS
+    ====================================== */
+
+    function updateUI() {
+
+      slots.forEach(function(slot, index) {
+
+        const selected =
+          selections[index];
+
+        const image =
+          slot.querySelector('.bb-slot-image');
+
+        const overlay =
+          slot.querySelector('.bb-slot-overlay');
+
+
+        if (selected) {
+
+          slot.classList.add('has-selection');
+
+          image.src =
+            selected.image || '';
+
+          image.alt =
+            selected.title;
+
+          overlay.textContent =
+            selected.title;
+
+        } else {
+
+          slot.classList.remove('has-selection');
+
+          image.removeAttribute('src');
+
+          image.alt = '';
+
+          overlay.textContent = '';
+
+        }
+
+      });
+
+
+      const selectedCount =
+        selections.filter(Boolean).length;
+
+
+      if (countElement) {
+        countElement.textContent =
+          selectedCount;
+      }
+
+
+      submitButton.disabled =
+        selectedCount !== slotCount;
+
+
+      refreshVariantStates();
+    }
+
+
+
+    /* =====================================
+       DISABLE ALREADY SELECTED
+    ====================================== */
+
+    function refreshVariantStates() {
+
+      variantButtons.forEach(function(button) {
+
+        const variantId =
+          button.dataset.variantId;
+
+        const available =
+          button.dataset.available === 'true';
+
+
+        if (!available) {
+          button.disabled = true;
+          return;
+        }
+
+
+        const selectedElsewhere =
+          selections.some(function(selection, index) {
+
+            return (
+              selection &&
+              selection.id === variantId &&
+              index !== activeSlot
+            );
+
+          });
+
+
+        if (
+          !allowDuplicates &&
+          selectedElsewhere
+        ) {
+          button.disabled = true;
+        } else {
+          button.disabled = false;
+        }
+
+
+        const activeSelection =
+          selections[activeSlot];
+
+
+        button.classList.toggle(
+          'is-selected',
+          !!activeSelection &&
+          activeSelection.id === variantId
+        );
+
+      });
+    }
+
+
+
+    /* =====================================
+       SELECT COLOUR
+    ====================================== */
+
+    variantButtons.forEach(function(button) {
+
+      button.addEventListener(
+        'click',
+        function() {
+
+          if (button.disabled) return;
+
+
+          selections[activeSlot] = {
+
+            id:
+              button.dataset.variantId,
+
+            title:
+              button.dataset.title,
+
+            image:
+              button.dataset.image
+
+          };
+
+
+          updateUI();
+
+          closeModal();
+
+        }
+      );
+
+    });
+
+
+
+    /* =====================================
+       SLOTS
+    ====================================== */
+
+    slots.forEach(function(slot) {
+
+      slot.addEventListener(
+        'click',
+        function() {
+
+          const slotIndex =
+            parseInt(
+              slot.dataset.slotIndex,
+              10
+            );
+
+          openModal(slotIndex);
+
+        }
+      );
+
+    });
+
+
+
+    /* =====================================
+       SEARCH
+    ====================================== */
+
+    function filterVariants(query) {
+
+      const normalized =
+        query.trim().toLowerCase();
+
+      let visibleCount = 0;
+
+
+      variantButtons.forEach(function(button) {
+
+        const title =
+          button.dataset.title
+            .toLowerCase();
+
+
+        const visible =
+          !normalized ||
+          title.includes(normalized);
+
+
+        button.style.display =
+          visible ? '' : 'none';
+
+
+        if (visible) {
+          visibleCount++;
+        }
+
+      });
+
+
+      if (emptyElement) {
+
+        emptyElement.style.display =
+          visibleCount
+            ? 'none'
+            : 'block';
+
+      }
+    }
+
+
+    if (searchInput) {
+
+      searchInput.addEventListener(
+        'input',
+        function() {
+
+          filterVariants(
+            searchInput.value
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* =====================================
+       MODAL CLOSE
+    ====================================== */
+
+    closeButton.addEventListener(
+      'click',
+      closeModal
+    );
+
+
+    modal.addEventListener(
+      'click',
+      function(event) {
+
+        if (event.target === modal) {
+          closeModal();
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      'keydown',
+      function(event) {
+
+        if (
+          event.key === 'Escape' &&
+          modal.classList.contains('is-open')
+        ) {
+          closeModal();
+        }
+
+      }
+    );
+
+
+
+    /* =====================================
+       ADD BUNDLE TO CART
+    ====================================== */
+
+    submitButton.addEventListener(
+      'click',
+      async function() {
+
+        if (
+          selections.some(
+            selection => !selection
+          )
+        ) {
+          return;
+        }
+
+
+        errorElement.classList.remove(
+          'is-visible'
+        );
+
+        errorElement.textContent = '';
+
+
+        const originalButtonText =
+          submitButton.textContent;
+
+
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+          'מוסיף לעגלה...';
+
+
+
+        /*
+          Aggregate identical variant IDs
+          in case duplicates are enabled.
+        */
+
+        const quantities = {};
+
+
+        selections.forEach(function(selection) {
+
+          if (!quantities[selection.id]) {
+            quantities[selection.id] = 0;
+          }
+
+          quantities[selection.id] += 1;
+
+        });
+
+
+        const items =
+          Object.entries(quantities)
+            .map(function(entry) {
+
+              return {
+                id: Number(entry[0]),
+                quantity: entry[1]
+              };
+
+            });
+
+
+        try {
+
+          const response =
+            await fetch(
+              window.Shopify.routes.root +
+              'cart/add.js',
+              {
+                method: 'POST',
+
+                headers: {
+                  'Content-Type':
+                    'application/json',
+
+                  'Accept':
+                    'application/json'
+                },
+
+                body: JSON.stringify({
+                  items: items
+                })
+              }
+            );
+
+
+          const data =
+            await response.json();
+
+
+          if (!response.ok) {
+
+            throw new Error(
+              data.description ||
+              data.message ||
+              'לא הצלחנו להוסיף את הסט לעגלה.'
+            );
+
+          }
+
+
+          window.location.href =
+            window.Shopify.routes.root +
+            'cart';
+
+
+        } catch (error) {
+
+          console.error(
+            'Bundle add error:',
+            error
+          );
+
+
+          errorElement.textContent =
+            error.message ||
+            'משהו השתבש. נסי שוב.';
+
+
+          errorElement.classList.add(
+            'is-visible'
+          );
+
+
+          submitButton.disabled = false;
+
+          submitButton.textContent =
+            originalButtonText;
+
+        }
+
+      }
+    );
+
+
+    updateUI();
+
+  }
+
+
+
+  const currentRoot =
+    document.getElementById(
+      'BundleBuilder-{{ section.id }}'
+    );
+
+
+  initBundleBuilder(currentRoot);
+
+
+
+  /*
+    Re-initialize when Shopify Theme Editor
+    reloads this section.
+  */
+
+  document.addEventListener(
+    'shopify:section:load',
+    function(event) {
+
+      const root =
+        event.target.querySelector(
+          '[data-bundle-builder]'
+        );
+
+      if (root) {
+        initBundleBuilder(root);
+      }
+
+    }
+  );
+
+})();
+</script>
+
+
+{% schema %}
+{
+  "name": "Color Bundle Builder",
+  "settings": [
+    {
+      "type": "product",
+      "id": "bundle_product",
+      "label": "Bundle product"
+    },
+    {
+      "type": "range",
+      "id": "slot_count",
+      "label": "Number of colours",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "allow_duplicates",
+      "label": "Allow same colour more than once",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "בחרי את הצבעים שלך"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "בחרי 4 צבעים וצרי את הסט שלך"
+    },
+    {
+      "type": "text",
+      "id": "offer_text",
+      "label": "Offer text",
+      "default": "בחרי 4 צבעים וקבלי את מחיר הסט המיוחד"
+    },
+    {
+      "type": "text",
+      "id": "modal_title",
+      "label": "Popup title",
+      "default": "בחרי צבע"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "חפשי צבע..."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "הוסיפי את הסט לעגלה"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Color Bundle Builder"
+    }
+  ]
+}
+{% endschema %}
