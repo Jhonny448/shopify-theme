@@ -102,11 +102,18 @@
         "padding_top": 8,
         "padding_bottom": 28
       }
+    },
+    "17871302997a965ce6": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "main",
     "disclosures",
-    "related-products"
+    "related-products",
+    "17871302997a965ce6"
   ]
 }
