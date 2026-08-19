@@ -205,6 +205,30 @@
         "padding_bottom": 52
       }
     },
+    "rich_text_MHr8xB": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_CgPxnY": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>הצטרפו לאלפי בנות שגילו את המהפכה בציפורניים!</strong>",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_CgPxnY"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 20,
+        "padding_bottom": 28
+      }
+    },
     "17871303141b26ab90": {
       "type": "apps",
       "blocks": {
@@ -232,6 +256,7 @@
     "custom_liquid_Tc3EW7",
     "custom_liquid_6d7kjh",
     "custom_liquid_wEpC78",
+    "rich_text_MHr8xB",
     "17871303141b26ab90"
   ]
 }
